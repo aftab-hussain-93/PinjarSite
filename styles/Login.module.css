@@ -1,7 +1,44 @@
 .loginWrapper {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    border: 1px solid black;
+    padding: 3rem;
+    margin-top: 2rem;
+    font-weight: 600;
+    width: 50%;
+}
+
+.loginWrapper input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.loginWrapper button {
+    padding: .5rem 1rem;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    transition: all 0.3s;
+    font-size: 17px;
+    letter-spacing: 0.7px;
+    font-weight: 500;
+}
+
+.loginWrapper button:hover {
+    /* background-color: #fff;
+    color: #000;
+    border: 0.5px solid black; */
+    transform: scale(.95);
+}
+
+.formLabel{
+    padding-top: 1rem;
+    padding-bottom: .5rem;
 }
 
 .loginContainer {
