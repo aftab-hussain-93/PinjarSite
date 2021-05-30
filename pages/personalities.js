@@ -4,7 +4,7 @@ import styles from '../styles/Personalities.module.css'
 
 const personalities = () => {
     return (
-        <div>
+        <div className={`container`}>
             <Meta title='Personalities' />
             <h1>Personalities Page</h1>
             <div className={styles.grid}>

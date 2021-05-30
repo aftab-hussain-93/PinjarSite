@@ -1,0 +1,13 @@
+.loginWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loginContainer {
+    /* height: 80vh; */
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
