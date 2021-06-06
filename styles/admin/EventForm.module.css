@@ -1,0 +1,109 @@
+.headingSection {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.actionBtn {
+    padding: 0.8rem ;
+    margin: 2rem;
+    font-size: 1rem;
+    font-weight: 400;
+    cursor: pointer;
+    background-color: #fff;
+    color: #292929;
+    overflow: hidden;
+    transition: all .3s;
+    border-radius: 10%;
+}
+
+.actionBtn:hover{
+    background-color: #292929;
+    color: #fff;
+}
+
+.eventForm{
+    padding: 2rem 3rem;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.eventForm label {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.eventForm .formInput {
+    width: 50%;
+    /* border: 1px solid red; */
+    /* display: inline-block; */
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+
+}
+
+.imageLabel {
+    margin-top: 2rem;
+    width: 50%;
+    background-color: #f8f8f8;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.imageLabel label{
+    cursor: pointer;
+}
+
+.imageLabel:hover{
+    transform: scale(.97);
+}
+
+.eventForm textarea {
+  margin-top: 2rem;
+  width: 50%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  resize: none;
+}
+
+.formSubmitSection {
+    display: flex;
+
+}
+
+.customFileInput::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.customFileInput::before {
+  content: 'Select some files';
+  display: inline-block;
+  /* background: linear-gradient(top, #f9f9f9, #e3e3e3); */
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+}
+.customFileInput:hover::before {
+  border-color: black;
+}
+/* .customFileInput:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+} */

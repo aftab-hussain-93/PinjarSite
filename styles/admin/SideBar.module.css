@@ -1,0 +1,36 @@
+.sideBarContainer{
+    width: 20%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: #FFFFFF;
+    overflow-x: hidden; 
+    border: none;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    background-color: #292929;
+}
+.item {
+    /* font-family:  sans-serif, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Courier New, monospace; */
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 22px;
+    color: #fff;
+    text-transform: capitalize;
+    letter-spacing: 0.025em;
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid #5e5c5c;
+    cursor: pointer;
+}
+
+.item:hover {
+     color: #292929;
+     background-color: #fff;
+}
+
+

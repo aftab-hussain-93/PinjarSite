@@ -15,7 +15,7 @@ const LoginForm = () => {
             setLoginError(error.message)
         } else {
             // Token is valid
-            Router.push('/')
+            Router.push('/admin/dashboard')
         }
     }
 
