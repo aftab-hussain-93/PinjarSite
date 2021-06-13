@@ -8,13 +8,11 @@ const dashboard = () => {
     return (
         <>
             <Meta title='Events' />
-            <div>
-                <div className={styles.headingSection}>
-                    <span className={`headingTitle`}>{`EVENTS. Add new events here`}</span>
-                    <button onClick={() => { setAddEvent(true) }} className={styles.actionBtn}>{`+Add Event`}</button>
-                </div>
-                <EventForm />
+            <div className="w-full mt-5 p-5 flex justify-between border-b border-gray-400 pb-5">
+                <span className="text-4xl "> Events Page </span>
+                <span className="btn text-primary bg-white border-primary border hover:bg-primary hover:text-white">Add a New Event</span>
             </div>
+            <EventForm />
         </>
     )
 }

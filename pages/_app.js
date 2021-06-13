@@ -1,6 +1,7 @@
 import Layout from '../components/Layout'
 import AdminLayout from '../components/admin/AdminLayout'
 import '../styles/globals.css'
+import "react-datetime/css/react-datetime.css";
 import { useRouter } from 'next/router'
 
 const MyApp = (values) => {

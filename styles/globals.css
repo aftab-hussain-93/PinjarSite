@@ -1,34 +1,27 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+/* @import url('https://cdnjs.cloudflare.com/ajax/libs/react-datepicker/4.1.1/react-datepicker.min.js'); */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* ./styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.card {
+    @apply bg-white rounded overflow-hidden shadow-md relative;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
+.badge {
+    @apply bg-secondary-100 text-secondary-200 text-xs uppercase font-bold rounded-full p-2 absolute top-0 ml-2 mt-2 flex justify-start items-center;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.btn {
+    @apply rounded-full py-2 px-3 capitalize text-sm font-semibold cursor-pointer tracking-wider;
 }
 
-* {
-  box-sizing: border-box;
+.navItem {
+  @apply ml-3 tracking-wider cursor-pointer text-gray-700 text-xl capitalize;
 }
 
-/* Centering the component */
-.container {
-  max-width: 70%;
-  margin: auto;
-  padding: 0 0.5rem;
-}
-
-.headingTitle {
-  font-size: 2.5rem;
-  text-transform: uppercase;
-  font-weight: 400;
+.sidebarItem {
+  @apply text-white font-semibold text-xl capitalize tracking-wider cursor-pointer border-gray-500 border-b p-2 hover:bg-white hover:text-gray-900 text-center;
 }

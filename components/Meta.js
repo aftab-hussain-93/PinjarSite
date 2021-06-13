@@ -14,9 +14,9 @@ const Meta = ({ title, keywords, description }) => {
 }
 
 Meta.defaultProps = {
-    title: 'Pinjar Community',
-    keywords: 'pinjar community',
-    description: 'Test description',
+    title: 'Karnataka Rajya Nadaf Pinjar Sangha',
+    keywords: 'Karnataka Rajya Nadaf Pinjar Sangha',
+    description: 'Karnataka Rajya Nadaf Pinjar Sangha',
 }
 
 export default Meta

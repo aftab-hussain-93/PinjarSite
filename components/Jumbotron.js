@@ -1,7 +1,8 @@
-import styles from '../styles/Jumbotron.module.css'
 const Jumbotron = () => {
+
     return (
-        <div className={styles.coverImage}>
+        <div className="bg-cover w-screen h-heroHeight bg-primary">
+
             
         </div>
     )
