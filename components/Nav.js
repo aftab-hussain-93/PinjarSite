@@ -15,6 +15,12 @@ const Nav = () => {
             </div>
             <ul className="hidden md:flex items-center">
                 <li className='navItem hover:text-primary'>
+                    <Link href='/events'>Events</Link>
+                </li>
+                <li className='navItem hover:text-primary'>
+                    <Link href='/admin/events'>Add Events</Link>
+                </li>
+                {/* <li className='navItem hover:text-primary'>
                     <Link href='/about'>About</Link>
                 </li>
                 <li className='navItem hover:text-primary'>
@@ -25,7 +31,7 @@ const Nav = () => {
                 </li>
                 <li className='navItem hover:text-primary'>
                     <Link href='/login'>Login</Link>
-                </li>
+                </li> */}
                 <li className='navItem hover:text-primary'>
                     <Link href='/personalities'>Personalities</Link>
                 </li>
