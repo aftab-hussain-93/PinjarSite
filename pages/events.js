@@ -11,10 +11,10 @@ const event = () => {
                 <h1 className="text-2xl mt-4 pl-1">Upcoming</h1>
 
                 <div className="mt-8 grid lg:grid-cols-2 gap-10"> {/** Events go here */}
-                    <EventCard eventName={`Event name`} img={`/portrait_pic.jpg`} description={description}/>
-                    <EventCard eventName={`Event name`} img={`/portrait_pic.jpg`} description={description}/>
-                    <EventCard eventName={`Event name`} img={`/portrait_pic.jpg`} description={description}/>
-                    <EventCard eventName={`Event name`} img={`/portrait_pic.jpg`} description={description}/>
+                    <EventCard eventName={`Event name`} img={`/event_img1.jpeg`} description={description}/>
+                    <EventCard eventName={`Event name`} img={`/event_img1.jpeg`} description={description}/>
+                    <EventCard eventName={`Event name`} img={`/event_img1.jpeg`} description={description}/>
+                    <EventCard eventName={`Event name`} img={`/event_img1.jpeg`} description={description}/>
                     <EventCard eventName={`Event name`} img={`/portrait_pic.jpg`} description={description}/>
                 </div>
             </div>
