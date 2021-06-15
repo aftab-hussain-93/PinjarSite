@@ -3,7 +3,7 @@ import Meta from '../../components/Meta'
 import EventForm from '../../components/admin/EventForm'
 import styles from '../../styles/admin/Event.module.css'
 
-const dashboard = () => {
+const dashboard = ({ googleKey }) => {
     const [addEvent, setAddEvent] = useState(false);
     return (
         <>
@@ -12,9 +12,18 @@ const dashboard = () => {
                 <span className="text-4xl "> Events Page </span>
                 <span className="btn text-primary bg-white border-primary border hover:bg-primary hover:text-white">Add a New Event</span>
             </div>
-            <EventForm />
+            <EventForm googleKey = {googleKey}/>
         </>
     )
+}
+
+
+export async function getServerSideProps(context) {
+    return {
+        props: {
+            googleKey: process.env.GOOGLE_MAPS_API_KEY
+        }, 
+    }
 }
 
 export default dashboard

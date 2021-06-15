@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-const EventCard = ({ eventName, img, description, dateTime }) => {
+const EventCard = ({ eventName, img, description, dateTime, location }) => {
     return (
         <div className="card hover:shadow-lg h-65">
             {/* <img src="/portrait_pic.jpg" alt="stew" className="w-full h-32 sm:h-56 object-cover" /> */}
@@ -11,7 +11,7 @@ const EventCard = ({ eventName, img, description, dateTime }) => {
                     <span className="font-bold">{eventName}</span>
                     <span className="text-gray-500 text-sm">Posted by Mario</span>
                 </div>
-                <span className="text-gray-500 text-md font-bold">Bangalore</span>
+                <span className="text-gray-500 text-md font-bold">{location ? location.city : ``}, {location ? location.state : ``}, {location ? location.country : ``}</span>
                 <div className="h-5 sm:h-10 overflow-hidden text-gray-500 text-sm">
                     {description}
                 </div>
