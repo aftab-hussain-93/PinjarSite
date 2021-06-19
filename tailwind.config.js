@@ -14,10 +14,13 @@ module.exports = {
         body: ['Montserrat']
       },
       height: {
-        heroHeight: '90vh'
+        heroHeight: '85vh',
+        navHeight: '15vh'
       },
       backgroundImage: {
-        hero: "linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(3, 3, 3, 0.3)), url('../public/jumbotron_img.png')",
+        "hero-pattern":
+          // "url('https://cdn.statically.io/gh/afkcodes/megbytdev-web/main/public/bg.svg')",
+          "url('../public/jumbotron_img.png')",
       },
       maxWidth: {
         '1/4': '25%',

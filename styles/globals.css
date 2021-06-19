@@ -7,7 +7,7 @@
 
 
 .card {
-    @apply bg-white rounded overflow-hidden shadow-md relative;
+    @apply bg-white rounded-3xl overflow-hidden shadow-lg relative ;
 }
 
 .badge {
@@ -24,4 +24,12 @@
 
 .sidebarItem {
   @apply text-white font-semibold text-xl capitalize tracking-wider cursor-pointer border-gray-500 border-b p-2 hover:bg-white hover:text-gray-900 text-center;
+}
+
+.halfPageBorderLine {
+  @apply w-1/6 h-1 inline-block border-primary border-t-4 mb-2;
+}
+
+.fullPageBorderLine {
+  @apply w-1/12 h-1 inline-block border-primary border-t-4 mb-2;
 }

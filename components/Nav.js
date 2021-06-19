@@ -1,15 +1,15 @@
 import Link from 'next/link'
-import Image from 'next/image'
 
 const Nav = () => {
     return (
-        <nav className="flex md:justify-around justify-between bg-white items-center px-12 z-50 shadow-md">
+        <nav className="flex md:justify-around h-navHeight m-0 justify-between bg-white items-center px-12 z-50 shadow-md">
             <div className="cursor-pointer">
-                <Link href='/'><Image
+                <Link href='/'><img
+                    className="w-full h-full"
                     src="/nav_logo.png"
                     alt="logo"
-                    width={90}
-                    height={90}
+                    // width={90}
+                    // height={90}
                 />
                 </Link>
             </div>
