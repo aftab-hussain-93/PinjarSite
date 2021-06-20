@@ -14,7 +14,7 @@ const HalfPageStatic = ({ headline, photo, htmlContent, subheadline, downloadIco
 
 
     return (
-        <div className="lg:grid lg:grid-cols-2 lg:max-w-2/3 mx-auto p-8 gap-5">
+        <div className="lg:grid lg:grid-cols-2 gap-5 p-8">
             <div className="rounded-md overflow-hidden my-auto">
                 <img
                     className="w-11/12 h-11/12"

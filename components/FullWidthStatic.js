@@ -9,7 +9,7 @@ const FullWidthStatic = ({ headline, subheadline, htmlContent, downloadIcon=fals
     }
 
     return (
-        <div className="lg:max-w-2/3 max-w-full mx-auto p-8">
+        <div className="p-8">
             <span className="fullPageBorderLine"></span>
             <div className="flex justify-between items-center">
                 {headline && <h1 className="text-4xl uppercase font-semibold tracking-wide mb-4 text-black">{headline}</h1>}

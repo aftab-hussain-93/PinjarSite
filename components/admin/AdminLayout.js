@@ -12,7 +12,7 @@ const AdminLayout = ({ children }) => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
             </div> */}
-            <div className="md:col-span-3 overflow-y-scroll">
+            <div className="md:col-span-3 overflow-y-scroll bg-gray-100 text-gray-500">
                 {children}
             </div>            
         </div>

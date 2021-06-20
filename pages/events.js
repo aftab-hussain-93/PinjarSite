@@ -9,9 +9,9 @@ const event = () => {
     return (
         <>
             <Meta title={'Events'} />
-            <div className="md:max-w-2/3 mx-auto p-12">
-                <h1 className="text-5xl border-gray-300 border-b pb-2">EVENTS</h1>
-                <h1 className="text-2xl mt-4 pl-1">Upcoming</h1>
+            <div className="md:max-w-2/3 mx-auto p-12 bg-white mt-1">
+                <h1 className="routeHeading">EVENTS</h1>
+                <h1 className="routeSubheading">Upcoming</h1>
 
                 <div className="mt-8 grid lg:grid-cols-2 gap-10"> {/** Events go here */}
                     <EventCard eventName={eventName} img={img} description={description}  dateTime={dateTime}/>

@@ -15,7 +15,7 @@ const EventCard = ({ eventName, img, description, dateTime, location }) => {
                 <div className="h-5 sm:h-10 overflow-hidden text-gray-500 text-sm">
                     {description}
                 </div>
-                <div className="text-primary text-sm font-bold cursor-pointer tracking-wider">
+                <div className="text-primary text-sm font-bold cursor-pointer tracking-wider hover:text-gray-500">
                     <Link href='/personalities'>More Details</Link>
                 </div>
             </div>

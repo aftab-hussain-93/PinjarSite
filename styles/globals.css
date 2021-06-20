@@ -19,7 +19,7 @@
 }
 
 .navItem {
-  @apply ml-3 tracking-wider cursor-pointer text-gray-700 text-xl capitalize;
+  @apply ml-7 tracking-wider cursor-pointer text-gray-700 text-xl capitalize;
 }
 
 .sidebarItem {
@@ -32,4 +32,12 @@
 
 .fullPageBorderLine {
   @apply w-1/12 h-1 inline-block border-primary border-t-4 mb-2;
+}
+
+.routeHeading {
+    @apply text-5xl border-gray-300 uppercase text-black border-b pb-2;
+}
+
+.routeSubheading {
+    @apply text-2xl font-bold text-primary mt-4 pl-1;
 }

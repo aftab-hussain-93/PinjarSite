@@ -15,7 +15,7 @@ const benefitItemProp4 = {
 
 const Benefits = (allBenefits) => {
     return (
-        <div className="lg:max-w-2/3 max-w-full mx-auto p-8">
+        <div className="p-8">
             <span className="fullPageBorderLine"></span>
             <h1 className="text-4xl uppercase font-semibold tracking-wide mb-8 text-black">Benefits from state and central govt</h1>
             <div className="w-full grid lg:grid-cols-2 grid-cols-1 gap-16">

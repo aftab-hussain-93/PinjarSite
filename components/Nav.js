@@ -18,9 +18,9 @@ const Nav = () => {
                     <Link href='/events'>Events</Link>
                 </li>
                 <li className='navItem hover:text-primary'>
-                    <Link href='/admin/events'>Add Events</Link>
+                    <Link href='/committee'>Committee</Link>
                 </li>
-                {/* <li className='navItem hover:text-primary'>
+                <li className='navItem hover:text-primary'>
                     <Link href='/about'>About</Link>
                 </li>
                 <li className='navItem hover:text-primary'>
@@ -30,13 +30,14 @@ const Nav = () => {
                     <Link href='/about'>Reports</Link>
                 </li>
                 <li className='navItem hover:text-primary'>
-                    <Link href='/login'>Login</Link>
-                </li> */}
-                <li className='navItem hover:text-primary'>
                     <Link href='/personalities'>Personalities</Link>
                 </li>
             </ul>
-            <div class="px-4 cursor-pointer md:hidden" id="burger">
+            <div className="rounded-full py-2 px-10 capitalize font-semibold cursor-pointer tracking-wider text-primary bg-white border-primary border hover:bg-primary hover:text-white text-lg">
+                <Link href='/login'>Login
+                </Link>
+            </div>
+            <div className="px-4 cursor-pointer md:hidden" id="burger">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>

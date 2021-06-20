@@ -1,6 +1,5 @@
 import Meta from '../components/Meta'
 import Jumbotron from '../components/Jumbotron'
-import Preamble from '../components/Preamble'
 import Benefits from '../components/Benefits'
 import FullWidthStatic from '../components/FullWidthStatic'
 import HalfPageStatic from '../components/HalfPageStatic'
@@ -29,19 +28,26 @@ const fixedAssetsSubheadings3 = {
   subheadline: `Shouhard Bhavan`
 }
 
+const preamble = {
+  headline: 'Preamble',
+  downloadIcon: true,
+}
+
 export default function Home() {
   return (
     <>
       <Meta/>
       <Jumbotron />
-      <Preamble />
-      <FullWidthStatic {...associationDetails}/>
-      <FullWidthStatic {...planAndProgressReports} />
-      <Benefits />
-      <FullWidthStatic {...fixedAssets} />
-      <HalfPageStatic {...fixedAssetsSubheadings1} />
-      <HalfPageStatic {...fixedAssetsSubheadings2} />
-      <HalfPageStatic {...fixedAssetsSubheadings3} />
+      <div className="bg-white mt-1 lg:max-w-2/3 mx-auto">
+        <HalfPageStatic {...preamble} />
+        <FullWidthStatic {...associationDetails} />
+        <FullWidthStatic {...planAndProgressReports} />
+        <Benefits />
+        <FullWidthStatic {...fixedAssets} />
+        <HalfPageStatic {...fixedAssetsSubheadings1} />
+        <HalfPageStatic {...fixedAssetsSubheadings2} />
+        <HalfPageStatic {...fixedAssetsSubheadings3} />
+      </div>
     </>
   )
 }
