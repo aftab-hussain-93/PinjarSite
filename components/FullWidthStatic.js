@@ -1,6 +1,6 @@
 import DownloadSymbol from './DownloadSymbol'
 
-const FullWidthStatic = ({ headline, subheadline, htmlContent, downloadIcon=false }) => {
+const FullWidthStatic = ({ headline, subheadline, htmlContent, downloadLink, downloadIcon=false }) => {
 
     if (!htmlContent) {
         htmlContent = `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> <br />
@@ -14,7 +14,7 @@ const FullWidthStatic = ({ headline, subheadline, htmlContent, downloadIcon=fals
             <div className="flex justify-between items-center">
                 {headline && <h1 className="text-4xl uppercase font-semibold tracking-wide mb-4 text-black">{headline}</h1>}
                 {downloadIcon && <div className=" mb-4 mr-6 p-3">
-                    <DownloadSymbol />
+                    <a href={downloadLink} download><DownloadSymbol /></a>
                 </div>}
             </div>
             {subheadline && <h1 className="text-2xl capitalize font-bold text-primary mb-3">{subheadline}</h1>}

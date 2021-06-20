@@ -35,7 +35,7 @@
 }
 
 .routeHeading {
-    @apply text-5xl border-gray-300 uppercase text-black border-b pb-2;
+    @apply text-5xl border-gray-300 uppercase text-black border-b pb-2 tracking-wide;
 }
 
 .routeSubheading {

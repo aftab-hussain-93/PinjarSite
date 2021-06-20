@@ -7,11 +7,14 @@ import HalfPageStatic from '../components/HalfPageStatic'
 const associationDetails = {
   headline: 'Association Details',
   subheadline: 'By Laws',
-  downloadIcon: true
+  downloadIcon: true,
+  downloadLink: `/documents/Association_Bylaws.pdf`
 }
 
 const planAndProgressReports = {
   headline: 'Plan and Progress Reports',
+  downloadIcon: true,
+  downloadLink: `/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
 }
 
 const fixedAssets = {
@@ -31,6 +34,7 @@ const fixedAssetsSubheadings3 = {
 const preamble = {
   headline: 'Preamble',
   downloadIcon: true,
+  downloadLink: `/documents/Preamble_ನಿಗಮದ-ಮನವಿ1-12-20.pdf`
 }
 
 export default function Home() {

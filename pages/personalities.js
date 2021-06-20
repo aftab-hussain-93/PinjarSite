@@ -1,43 +1,84 @@
-import Image from 'next/image'
 import Meta from '../components/Meta'
-import styles from '../styles/Personalities.module.css'
+import Image from 'next/image'
 
 const personalities = () => {
+    const img = `/portrait_pic.jpg`
+
     return (
-        <div className={`container`}>
-            <Meta title='Personalities' />
-            <h1>Personalities Page</h1>
-            <div className={styles.grid}>
-                <div className={styles.card}>
-                    <Image
-                        src="/portrait_pic.jpg"
-                        alt="logo"
-                        width={150}
-                        height={300}
-                    />
-                    <p>this is the first personality card</p>
-                    <p>Nostrud aliqua aute ut ea. Veniam voluptate cillum aute incididunt aute aute nisi sint anim eu enim. Velit Lorem mollit eiusmod aliquip ullamco amet magna exercitation dolore do sit. Deserunt aute anim velit incididunt reprehenderit. Do minim ipsum reprehenderit culpa aute est ad nulla laborum elit anim sint. Qui ipsum deserunt minim aliquip ex duis dolor. Sint voluptate deserunt consequat veniam labore aliquip mollit irure.</p>
-                </div>
-                <div className={styles.card}>
-                    <Image
-                        src="/portrait_pic.jpg"
-                        alt="logo"
-                        width={150}
-                        height={300}
-                        />
-                        <p>this is the second personality card</p>
-                </div>
-                <div className={styles.card}>
-                    <Image
-                        src="/portrait_pic.jpg"
-                        alt="logo"
-                        width={150}
-                        height={300}
-                        />
-                        <p>this is the third personality card</p>
+        <>
+            <Meta title={'Personalities'} />
+            <div className="md:max-w-2/3 mx-auto p-12 bg-white mt-1">
+                <h1 className="routeHeading">Personalities</h1>
+
+                <div className="mt-8 grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-10">
+                    
+                    <div className="rounded-lg overflow-hidden">
+                        <img src={img} className="w-full h-40 sm:h-64 object-cover" />
+                        <div className="text-center">
+                            <p className="text-xl font-semibold">Full Name</p>
+                            <p className="text-lg font-bold">Occupation/Position</p>
+                            <p className="text-lg">Title</p>
+                        </div>
+                    </div>
+                    <div className="rounded-lg overflow-hidden">
+                        <img src={img} className="w-full h-40 sm:h-64 object-cover" />
+                        <div className="text-center">
+                            <p className="text-xl font-semibold">Full Name</p>
+                            <p className="text-lg font-bold">Occupation/Position</p>
+                            <p className="text-lg">Title</p>
+                        </div>
+                    </div>
+                    <div className="rounded-lg overflow-hidden">
+                        <img src={img} className="w-full h-40 sm:h-64 object-cover" />
+                        <div className="text-center">
+                            <p className="text-xl font-semibold">Full Name</p>
+                            <p className="text-lg font-bold">Occupation/Position</p>
+                            <p className="text-lg">Title</p>
+                        </div>
+                    </div>
+                    <div className="rounded-lg overflow-hidden">
+                        <img src={img} className="w-full h-40 sm:h-64 object-cover" />
+                        <div className="text-center">
+                            <p className="text-xl font-semibold">Full Name</p>
+                            <p className="text-lg font-bold">Occupation/Position</p>
+                            <p className="text-lg">Title</p>
+                        </div>
+                    </div>
+                    <div className="rounded-lg overflow-hidden">
+                        <img src={img} className="w-full h-40 sm:h-64 object-cover" />
+                        <div className="text-center">
+                            <p className="text-xl font-semibold">Full Name</p>
+                            <p className="text-lg font-bold">Occupation/Position</p>
+                            <p className="text-lg">Title</p>
+                        </div>
+                    </div>
+                    <div className="rounded-lg overflow-hidden">
+                        <img src={img} className="w-full h-40 sm:h-64 object-cover" />
+                        <div className="text-center">
+                            <p className="text-xl font-semibold">Full Name</p>
+                            <p className="text-lg font-bold">Occupation/Position</p>
+                            <p className="text-lg">Title</p>
+                        </div>
+                    </div>
+                    <div className="rounded-lg overflow-hidden">
+                        <img src={img} className="w-full h-40 sm:h-64 object-cover" />
+                        <div className="text-center">
+                            <p className="text-xl font-semibold">Full Name</p>
+                            <p className="text-lg font-bold">Occupation/Position</p>
+                            <p className="text-lg">Title</p>
+                        </div>
+                    </div>
+                    <div className="rounded-lg overflow-hidden">
+                        <img src={img} className="w-full h-40 sm:h-64 object-cover" />
+                        <div className="text-center">
+                            <p className="text-xl font-semibold">Full Name</p>
+                            <p className="text-lg font-bold">Occupation/Position</p>
+                            <p className="text-lg">Title</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

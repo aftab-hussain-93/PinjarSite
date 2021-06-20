@@ -1,6 +1,6 @@
 import DownloadSymbol from "./DownloadSymbol"
 
-const HalfPageStatic = ({ headline, photo, htmlContent, subheadline, downloadIcon = false }) => {
+const HalfPageStatic = ({ headline, photo, htmlContent, subheadline, downloadLink, downloadIcon = false }) => {
 
     if (!photo) {
         photo = `/events/event_img1.jpeg`
@@ -27,7 +27,7 @@ const HalfPageStatic = ({ headline, photo, htmlContent, subheadline, downloadIco
                 <div className="flex justify-between items-center">
                     {headline && <h1 className="text-4xl uppercase font-semibold tracking-wide mb-4 text-black">{headline}</h1>}
                     {downloadIcon && <div className=" mb-4 mr-6 p-3">
-                        <DownloadSymbol />
+                        <a href={downloadLink} download><DownloadSymbol /></a>
                     </div>}
                 </div>
                 {subheadline && <h1 className="text-2xl capitalize font-bold text-primary mb-3">{subheadline}</h1>}

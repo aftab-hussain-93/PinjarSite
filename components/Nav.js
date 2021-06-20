@@ -18,7 +18,7 @@ const Nav = () => {
                     <Link href='/events'>Events</Link>
                 </li>
                 <li className='navItem hover:text-primary'>
-                    <Link href='/committee'>Committee</Link>
+                    <Link href='/organization'>Organization</Link>
                 </li>
                 <li className='navItem hover:text-primary'>
                     <Link href='/about'>About</Link>
