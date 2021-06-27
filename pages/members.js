@@ -1,18 +1,18 @@
 import Meta from '../components/Meta'
-import Image from 'next/image'
+import { Members as messages } from '../locale/messages'
 
-const organization = () => {
+const members = () => {
     
     return (
-        <div>
-            <Meta title={'Organization'} />
-            <div className="md:max-w-2/3 mx-auto md:p-12 p-2 bg-white mt-1">
-                <h1 className="routeHeading">Organization</h1>
-                <p className="mt-4">Brief description of the committee. Brief description of the committee. Brief description of the committee. Brief description of the committee. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit aperiam, quibusdam hic repellat fuga eveniet blanditiis porro aliquam adipisci in cupiditate nemo consequatur corrupti minima reiciendis fugiat voluptates nostrum neque.</p>
-                <div className="mt-4">
+        <>
+            <Meta title={messages.mainHeading} />
+            <section className="responsivePageDiv">
+                <h1 className="routeHeading">{messages.mainHeading}</h1>
+                <p className="mt-4">{messages.briefDescription} </p>
+                <article className="mt-4">
                     <span className="fullPageBorderLine"></span>
-                    <h1 className="text-4xl uppercase font-semibold tracking-wide mb-8 text-gray-700">State Committee</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero eos nulla sit sequi minima ratione neque aspernatur explicabo repellendus expedita illo, iusto impedit eum laudantium autem cumque. Quod, consectetur quidem! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, doloremque ullam magni dicta mollitia laboriosam omnis. Fuga omnis repudiandae iusto perferendis in autem nemo optio, dolore ea? Dolorum, necessitatibus a.</p>
+                    <h1 className="text-3xl uppercase font-semibold tracking-wide mb-8 text-gray-700">State Committee</h1>
+                    <p>{messages.stateBriefDescription}</p>
                     <h1 className="routeSubheading">State Office Bearers</h1>
                     <div className="w-full mt-2 flex justify-center items-center">
                         <img
@@ -34,10 +34,11 @@ const organization = () => {
                             className="w-full md:w-8/12"
                         />
                     </div>
-                </div>
-                <div className="mt-4">
+                </article>
+                <article className="mt-4">
                     <span className="fullPageBorderLine"></span>
-                    <h1 className="text-4xl uppercase font-semibold tracking-wide mb-8 text-gray-700">District Committee</h1>                    
+                    <h1 className="text-3xl uppercase font-semibold tracking-wide mb-8 text-gray-700">District Committee</h1>
+                    <p>{messages.distBriefDescription}</p>
                     <h1 className="routeSubheading">Structure</h1>
                     <div className="w-full flex justify-center items-center mt-2">
                         <img
@@ -46,10 +47,11 @@ const organization = () => {
                             className="w-full md:w-9/12"
                         />
                     </div>
-                </div>
-                <div className="mt-4">
+                </article>
+                <article className="mt-4">
                     <span className="fullPageBorderLine"></span>
-                    <h1 className="text-4xl uppercase font-semibold tracking-wide mb-8 text-gray-700">Taluka Committee</h1>                    
+                    <h1 className="text-3xl uppercase font-semibold tracking-wide mb-8 text-gray-700">Taluka Committee</h1>
+                    <p>{messages.talukaBriefDescription}</p>
                     <h1 className="routeSubheading">Structure</h1>
                     <div className="w-full flex justify-center items-center mt-2">
                         <img
@@ -64,10 +66,10 @@ const organization = () => {
                         <li>Administrating Taluka level activities</li>
                         <li>Reporting to State committee</li>
                     </ol>
-                </div>
-            </div>
-        </div>
+                </article>
+            </section>
+        </>
     )
 }   
 
-export default organization
+export default members

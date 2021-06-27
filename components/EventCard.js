@@ -3,16 +3,16 @@ import Image from 'next/image'
 
 const EventCard = ({ eventName, img, description, dateTime, location }) => {
     return (
-        <div className="card hover:shadow-lg h-65">
+        <article className="eventCard h-65">
             {/* <img src="/portrait_pic.jpg" alt="stew" className="w-full h-32 sm:h-56 object-cover" /> */}
-            <img src={img} className="w-full h-32 sm:h-56 object-cover" />
+            <img src={img} className="w-full h-40 sm:h-56 object-cover" />
             <div className="m-4">
                 <div className="flex justify-between">
                     <span className="font-bold">{eventName}</span>
                     <span className="text-gray-500 text-sm">Posted by Mario</span>
                 </div>
                 <span className="text-gray-500 text-md font-bold">{location ? location.city : ``}, {location ? location.state : ``}, {location ? location.country : ``}</span>
-                <div className="h-5 sm:h-10 overflow-hidden text-gray-500 text-sm">
+                <div className="sm:h-10 overflow-hidden text-gray-500 text-sm sm:block hidden">
                     {description}
                 </div>
                 <div className="text-primary text-sm font-bold cursor-pointer tracking-wider hover:text-gray-500">
@@ -25,7 +25,7 @@ const EventCard = ({ eventName, img, description, dateTime, location }) => {
                 </svg>
                 <p className='ml-1 uppercase'>{dateTime}</p>
             </div>
-        </div>
+        </article>
     )
 }
 

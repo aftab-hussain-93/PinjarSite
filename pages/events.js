@@ -9,7 +9,7 @@ const event = () => {
     return (
         <>
             <Meta title={'Events'} />
-            <div className="md:max-w-2/3 mx-auto p-12 bg-white mt-1">
+            <section className="responsivePageDiv">
                 <h1 className="routeHeading">EVENTS</h1>
                 <h1 className="routeSubheading">Upcoming</h1>
 
@@ -20,7 +20,7 @@ const event = () => {
                     <EventCard eventName={eventName} img={img} description={description} dateTime={dateTime}/>
                     <EventCard eventName={eventName} img={`/portrait_pic.jpg`} description={description} dateTime={dateTime}/>
                 </div>
-            </div>
+            </section>
         </>
     )
 }

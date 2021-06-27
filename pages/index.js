@@ -1,15 +1,8 @@
 import Meta from '../components/Meta'
 import Jumbotron from '../components/Jumbotron'
-import Benefits from '../components/Benefits'
-import FullWidthStatic from '../components/FullWidthStatic'
-import HalfPageStatic from '../components/HalfPageStatic'
-
-const associationDetails = {
-  headline: 'Association Details',
-  subheadline: 'By Laws',
-  downloadIcon: true,
-  downloadLink: `/documents/Association_Bylaws.pdf`
-}
+import FullWidthLayout from '../components/FullWidthLayout'
+import HalfWidthLayout from '../components/HalfWidthLayout'
+import AssociationDetails from '../components/AssociationDetails'
 
 const planAndProgressReports = {
   headline: 'Plan and Progress Reports',
@@ -17,24 +10,12 @@ const planAndProgressReports = {
   downloadLink: `/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
 }
 
-const fixedAssets = {
-  headline: 'Association Fixed Assets and Properties',
-}
-
-const fixedAssetsSubheadings1 = {
-  subheadline: `College`
-}
-const fixedAssetsSubheadings2 = {
-  subheadline: `Shaadi Mahal`
-}
-const fixedAssetsSubheadings3 = {
-  subheadline: `Shouhard Bhavan`
-}
-
 const preamble = {
   headline: 'Preamble',
   downloadIcon: true,
-  downloadLink: `/documents/Preamble_ನಿಗಮದ-ಮನವಿ1-12-20.pdf`
+  downloadLink: `/documents/Preamble_ನಿಗಮದ-ಮನವಿ1-12-20.pdf`,
+  htmlContent: `<p>The Nadaf community is also called with names - Behna, Dudekula, Mansuri, Pinjar in different regions of India. Ancestors of our community immigrated from Afghanistan and Persia (Iran) for the business purpose of Cotton ginning and trading.</p> <br />
+                <p>The community is called as Behna and Mansuri in North India, as Dudekula in Andrapradesh and Telangana, as Nadafs and Pinjars in Karnataka. Total population of this community may exceed 10 million. King Tippu Sulthan belongs to this community. </p>`
 }
 
 export default function Home() {
@@ -42,16 +23,11 @@ export default function Home() {
     <>
       <Meta/>
       <Jumbotron />
-      <div className="bg-white mt-1 lg:max-w-2/3 mx-auto">
-        <HalfPageStatic {...preamble} />
-        <FullWidthStatic {...associationDetails} />
-        <FullWidthStatic {...planAndProgressReports} />
-        <Benefits />
-        <FullWidthStatic {...fixedAssets} />
-        <HalfPageStatic {...fixedAssetsSubheadings1} />
-        <HalfPageStatic {...fixedAssetsSubheadings2} />
-        <HalfPageStatic {...fixedAssetsSubheadings3} />
-      </div>
+      <section className="responsivePageDiv">
+        <HalfWidthLayout {...preamble} />
+        <AssociationDetails />
+        <FullWidthLayout {...planAndProgressReports} />
+      </section>
     </>
   )
 }

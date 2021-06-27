@@ -16,10 +16,10 @@ const benefitItemProp4 = {
 
 const Benefits = (allBenefits) => {
     return (
-        <div className="p-8">
+        <article className="mb-4">
             <span className="fullPageBorderLine"></span>
             <div className="flex justify-between items-center mb-3">
-                <h1 className="text-4xl uppercase font-semibold tracking-wide mb-4 text-black">Benefits from state and central govt</h1>
+                <h1 className="articleHeading">Benefits from state and central govt</h1>
                 <div className=" mb-4 mr-6 p-3">
                     <a href={'/documents/Benefits_REVISED-ALL-SCHEMES-DETAILS-20-21-Revised-1.pdf'} download><DownloadSymbol /></a>
                 </div>
@@ -30,7 +30,7 @@ const Benefits = (allBenefits) => {
                 <BenefitItem {...benefitItemProp3} />
                 <BenefitItem {...benefitItemProp4} />
             </div>
-        </div>
+        </article>
     )
 }
 
