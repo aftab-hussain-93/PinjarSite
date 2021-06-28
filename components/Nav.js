@@ -1,8 +1,25 @@
 import React from "react";
 import Link from 'next/link'
 
+
+
 export default function Navbar() {
     const [navbarOpen, setNavbarOpen] = React.useState(false);
+
+    // `onClick`, `href`, and `ref` need to be passed to the DOM element
+    // for proper handling
+    const MyButton = React.forwardRef(({ onClick, href, title }, ref) => {
+        return (
+            <a className="block w-full h-full" href={href} onClick={() => {
+                setNavbarOpen(false)
+                onClick()
+            }
+            } ref={ref}>
+                {title}
+            </a>
+        )
+    })
+
     return (
         <>
             <nav className="relative flex flex-wrap items-center justify-around bg-white m-0 h-navHeight shadow-md z-20">
@@ -21,7 +38,7 @@ export default function Navbar() {
                             type="button"
                             onClick={() => setNavbarOpen(!navbarOpen)}
                         >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-8 border border-solid" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                             </svg>
                         </button>}
@@ -30,7 +47,7 @@ export default function Navbar() {
                             type="button"
                             onClick={() => setNavbarOpen(!navbarOpen)}
                         >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-8 border border-solid " fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>}
@@ -44,23 +61,23 @@ export default function Navbar() {
                     >
                         <ul className="flex flex-col lg:flex-row list-none lg:ml-auto z-50 pt-5 lg:p-0 text-center">
                             <li className='navItem'>
-                                <Link href='/events'>Events</Link>
+                                <Link href='/events' passHref><MyButton title={`Events`}/></Link>
                             </li>
                             <li className='navItem'>
-                                <Link href='/members'>Members</Link>
+                                <Link href='/members' passHref><MyButton title={`Members`} /></Link>
                             </li>
                             <li className='navItem'>
-                                <Link href='/about'>About</Link>
+                                <Link href='/about' passHref><MyButton title={`About`} /></Link>
                             </li>
                             <li className='navItem'>
-                                <Link href='/benefits'>Benefits</Link>
+                                <Link href='/benefits' passHref><MyButton title={`Benefits`} /></Link>
                             </li>
                             <li className='navItem'>
-                                <Link href='/about'>Reports</Link>
+                                <Link href='/reports' passHref><MyButton title={`Reports`} /></Link>
                             </li>
-                            <li className='navItem'>
-                                <Link href='/personalities'>Personalities</Link>
-                            </li>
+                            {/* <li className='navItem'>
+                                <Link href='/personalities' passHref><MyButton title={`Personalities`} /></Link>
+                            </li> */}
                         </ul>
                     </div>
                 </div>
@@ -69,46 +86,3 @@ export default function Navbar() {
     );
 }
 
-// import Link from 'next/link'
-
-// const Nav = () => {
-//     return (
-//         <nav className="flex md:justify-around h-navHeight m-0 justify-between bg-white items-center px-12 z-50 shadow-md">
-            // <div className="cursor-pointer">
-            //     <Link href='/'><img
-            //         className="w-full h-full"
-            //         src="/nav_logo.png"
-            //         alt="logo"
-            //     />
-            //     </Link>
-            // </div>
-//             <ul className="hidden md:flex items-center">
-                // <li className='navItem hover:text-primary'>
-                //     <Link href='/events'>Events</Link>
-                // </li>
-                // <li className='navItem hover:text-primary'>
-                //     <Link href='/organization'>Organization</Link>
-                // </li>
-                // <li className='navItem hover:text-primary'>
-                //     <Link href='/about'>About</Link>
-                // </li>
-                // <li className='navItem hover:text-primary'>
-                //     <Link href='/about'>Benefits</Link>
-                // </li>
-                // <li className='navItem hover:text-primary'>
-                //     <Link href='/about'>Reports</Link>
-                // </li>
-                // <li className='navItem hover:text-primary'>
-                //     <Link href='/personalities'>Personalities</Link>
-                // </li>
-//             </ul>
-//             <div className="px-4 cursor-pointer md:hidden" id="burger">
-//                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-//                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-//                 </svg>
-//             </div>
-//         </nav>
-//     )
-// }
-
-// export default Nav

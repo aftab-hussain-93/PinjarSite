@@ -11,9 +11,9 @@ const members = () => {
                 <p className="mt-4">{messages.briefDescription} </p>
                 <article className="mt-4">
                     <span className="fullPageBorderLine"></span>
-                    <h1 className="text-3xl uppercase font-semibold tracking-wide mb-8 text-gray-700">State Committee</h1>
+                    <h1 className="text-3xl uppercase font-semibold tracking-wide mb-3 text-gray-700">State Committee</h1>
                     <p>{messages.stateBriefDescription}</p>
-                    <h1 className="routeSubheading">State Office Bearers</h1>
+                    <h2 className="routeSubheading">State Office Bearers</h2>
                     <div className="w-full mt-2 flex justify-center items-center">
                         <img
                             src="/State_Office_Bearers.png"
@@ -37,9 +37,9 @@ const members = () => {
                 </article>
                 <article className="mt-4">
                     <span className="fullPageBorderLine"></span>
-                    <h1 className="text-3xl uppercase font-semibold tracking-wide mb-8 text-gray-700">District Committee</h1>
+                    <h2 className="text-3xl uppercase font-semibold tracking-wide mb-3 text-gray-700">District Committee</h2>
                     <p>{messages.distBriefDescription}</p>
-                    <h1 className="routeSubheading">Structure</h1>
+                    <h2 className="routeSubheading">Structure</h2>
                     <div className="w-full flex justify-center items-center mt-2">
                         <img
                             src="/District_Structure.png"
@@ -50,9 +50,9 @@ const members = () => {
                 </article>
                 <article className="mt-4">
                     <span className="fullPageBorderLine"></span>
-                    <h1 className="text-3xl uppercase font-semibold tracking-wide mb-8 text-gray-700">Taluka Committee</h1>
+                    <h2 className="text-3xl uppercase font-semibold tracking-wide mb-3 text-gray-700">Taluka Committee</h2>
                     <p>{messages.talukaBriefDescription}</p>
-                    <h1 className="routeSubheading">Structure</h1>
+                    <h2 className="routeSubheading">Structure</h2>
                     <div className="w-full flex justify-center items-center mt-2">
                         <img
                             src="/Taluka_Structure.png"
@@ -60,7 +60,7 @@ const members = () => {
                             className="w-full md:w-9/12"
                         />
                     </div>
-                    <h1 className="routeSubheading">Objectives</h1>
+                    <h2 className="routeSubheading">Objectives</h2>
                     <ol className="list-decimal pl-8 leading-7">
                         <li className="pt-3">Mandatory Quarterly Meetings</li>
                         <li>Administrating Taluka level activities</li>

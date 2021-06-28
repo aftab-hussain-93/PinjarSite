@@ -50,7 +50,7 @@
 }
 
 .articleHeading {
-    @apply text-3xl uppercase font-semibold tracking-wide mb-8 text-gray-700;
+    @apply text-3xl uppercase font-semibold tracking-wide text-gray-700;
     
 }
 

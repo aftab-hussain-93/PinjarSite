@@ -10,17 +10,17 @@ const FullWidthLayout = ({ headline, subheadline, htmlContent, downloadLink, dow
 
     return (
         // <div className="p-8">
-        <div className="mb-4">
+        <article className="mb-4">
             <span className="fullPageBorderLine"></span>
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center mb-3">
                 {headline && <h1 className="articleHeading">{headline}</h1>}
-                {downloadIcon && <div className=" mb-4 mr-6 p-3">
-                    <a href={downloadLink} download><DownloadSymbol /></a>
+                {downloadIcon && <div className="mb-4 mr-6">
+                    <a href={downloadLink} target="blank"><DownloadSymbol /></a>
                 </div>}
             </div>
             {subheadline && <h1 className="text-2xl capitalize font-bold text-primary mb-3">{subheadline}</h1>}
             <div dangerouslySetInnerHTML={{ __html: htmlContent }}></div> 
-        </div>
+        </article>
     )
 }
 

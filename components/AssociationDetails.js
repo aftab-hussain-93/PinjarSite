@@ -9,7 +9,7 @@ const AssociationDetails = () => {
     return (
         <article className="mb-4">
             <span className="fullPageBorderLine"></span>
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center mb-3">
                 {headline && <h1 className="articleHeading">{headline}</h1>}
             </div>
             <div>
@@ -17,7 +17,7 @@ const AssociationDetails = () => {
                 <p>{associationDetailsDescriptionPara2}</p>
             </div>
             <div className="mt-3">
-                <a href={downloadLink} download className="downloadBtn mt-2 inline-block" >Download By-Laws</a>
+                <a href={downloadLink} target="blank" className="downloadBtn mt-2 inline-block" >Download By-Laws</a>
             </div>
         </article>
     )

@@ -24,10 +24,10 @@ const HalfWidthLayout = ({ headline, photo, htmlContent, subheadline, downloadLi
             </div>
             <article className="my-2 lg:my-0">
                 {headline && <span className="halfPageBorderLine"></span>}
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center mb-3">
                     {headline && <h1 className="articleHeading">{headline}</h1>}
-                    {downloadIcon && <div className=" mb-4 mr-6 p-3">
-                        <a href={downloadLink} download><DownloadSymbol /></a>
+                    {downloadIcon && <div className=" mb-4 mr-6">
+                        <a href={downloadLink} target="blank"><DownloadSymbol /></a>
                     </div>}
                 </div>
                 {subheadline && <h1 className="text-2xl capitalize font-bold text-primary mb-3">{subheadline}</h1>}

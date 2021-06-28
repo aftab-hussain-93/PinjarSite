@@ -6,9 +6,9 @@ const benefits = () => {
     return (
         <>
             <Meta title={'Benefits'} />
-            <div className="responsivePageDiv">
+            <section className="responsivePageDiv">
                 <Benefits />
-            </div>
+            </section>
         </>
     )
 }
