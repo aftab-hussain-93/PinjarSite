@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import EventCard from '../EventCard';
+import EventCard from "../Events/EventCard"
 
 import Datetime from 'react-datetime';
 import { usePlacesWidget }  from "react-google-autocomplete";

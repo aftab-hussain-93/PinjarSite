@@ -7,7 +7,7 @@ const personalities = () => {
     return (
         <>
             <Meta title={'Personalities'} />
-            <div className="md:max-w-2/3 mx-auto p-12 bg-white mt-1">
+            <section className="responsivePageDiv">
                 <h1 className="routeHeading">Personalities</h1>
 
                 <div className="mt-8 grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-10">
@@ -77,7 +77,7 @@ const personalities = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </>
     )
 }

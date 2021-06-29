@@ -1,5 +1,5 @@
 import Meta from '../components/Meta'
-import Benefits from '../components/Benefits'
+import Benefits from '../components/Benefits/Benefits'
 
 const benefits = () => {
 

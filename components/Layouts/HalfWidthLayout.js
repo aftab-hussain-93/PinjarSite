@@ -1,4 +1,4 @@
-import DownloadSymbol from "./DownloadSymbol"
+import DownloadSymbol from "../DownloadSymbol"
 
 const HalfWidthLayout = ({ headline, photo, htmlContent, subheadline, downloadLink, downloadIcon = false }) => {
 

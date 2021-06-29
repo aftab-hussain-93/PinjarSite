@@ -10,7 +10,7 @@ const AssociationDetails = () => {
         <article className="mb-4">
             <span className="fullPageBorderLine"></span>
             <div className="flex justify-between items-center mb-3">
-                {headline && <h1 className="articleHeading">{headline}</h1>}
+                <h1 className="articleHeading">{headline}</h1>
             </div>
             <div>
                 <p>{associationDetailsDescriptionPara1}</p><br />

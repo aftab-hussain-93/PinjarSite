@@ -1,14 +1,8 @@
 import Meta from '../components/Meta'
 import Jumbotron from '../components/Jumbotron'
-import FullWidthLayout from '../components/FullWidthLayout'
-import HalfWidthLayout from '../components/HalfWidthLayout'
+import HalfWidthLayout from '../components/Layouts/HalfWidthLayout'
 import AssociationDetails from '../components/AssociationDetails'
-
-const planAndProgressReports = {
-  headline: 'Plan and Progress Reports',
-  downloadIcon: true,
-  downloadLink: `/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
-}
+import AllEvents from '../components/Events/AllEvents'
 
 const preamble = {
   headline: 'Preamble',
@@ -18,7 +12,7 @@ const preamble = {
                 <p>The community is called as Behna and Mansuri in North India, as Dudekula in Andrapradesh and Telangana, as Nadafs and Pinjars in Karnataka. Total population of this community may exceed 10 million. King Tippu Sulthan belongs to this community. </p>`
 }
 
-export default function Home() {
+export default function Home({ events }) {
   return (
     <>
       <Meta/>
@@ -26,8 +20,22 @@ export default function Home() {
       <section className="responsivePageDiv">
         <HalfWidthLayout {...preamble} />
         <AssociationDetails />
-        <FullWidthLayout {...planAndProgressReports} />
+        <AllEvents events={events}/>
       </section>
     </>
   )
+}
+
+
+export async function getServerSideProps(context) {
+
+  const res = await fetch("http://localhost:3000/api/events")
+
+  const data = await res.json()
+
+  return {
+    props: {
+      events: data.events
+    }, // will be passed to the page component as props
+  }
 }

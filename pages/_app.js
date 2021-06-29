@@ -1,4 +1,4 @@
-import Layout from '../components/Layout'
+import Layout from '../components/Layouts/Layout'
 import AdminLayout from '../components/admin/AdminLayout'
 import '../styles/globals.css'
 import "react-datetime/css/react-datetime.css";

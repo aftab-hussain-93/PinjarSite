@@ -1,7 +1,7 @@
 import Meta from '../components/Meta'
 import AssociationDetails from '../components/AssociationDetails'
-import FullWidthLayout from '../components/FullWidthLayout'
-import HalfWidthLayout from '../components/HalfWidthLayout'
+import FullWidthLayout from '../components/Layouts/FullWidthLayout'
+import HalfWidthLayout from '../components/Layouts/HalfWidthLayout'
 
 const fixedAssets = {
     headline: 'Association Fixed Assets and Properties',
@@ -31,8 +31,7 @@ const about = () => {
     return (
         <div>
             <Meta title={'About Association'} />
-            <div className="md:max-w-2/3 mx-auto md:p-12 p-2 bg-white mt-1">
-                {/* <h1 className="text-4xl font-semibold border-gray-300 uppercase text-black border-b pb-2 tracking-wide">Karnataka Rajya Nadaf Pinjar Sangha</h1> */}
+            <section className="responsivePageDiv">
                 <h1 className="routeHeading">Karnataka Rajya Nadaf Pinjar Sangha</h1>
                 <p className="mt-4">The Pinjara or Nadafs are a community found in the states of Madhya Pradesh, Maharashtra, Karnataka, Gujarat and Rajasthan in India. The terms Pinjara, Mansoori, and Dhunia are used interchangebly in some regions of India whereas in other regions they are separate communities. They are also known as Mansoori, especially in Gujarat, where the name Pinjara is no longer used. The Pinjara is the traditional cotton carder of Central India, just like the are the traditional cotton carders of North India.</p>
                 <div className="mt-4">
@@ -52,7 +51,7 @@ const about = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
     )
 }

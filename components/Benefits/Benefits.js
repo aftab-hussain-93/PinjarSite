@@ -1,6 +1,6 @@
 import BenefitItem from './BenefitItem'
-import DownloadSymbol from '../components/DownloadSymbol'
-import {Benefits as messages} from '../locale/messages'
+import DownloadSymbol from '../DownloadSymbol'
+import {Benefits as messages} from '../../locale/messages'
 
 const benefitItemProp1 = {
     headline: 'For educational purposes'
