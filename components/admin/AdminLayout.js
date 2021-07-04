@@ -3,20 +3,33 @@ import SideBar from './SideBar'
 const AdminLayout = ({ children }) => {
 
     return (
-        <div className="md:grid md:grid-cols-4 h-screen">
+        <div className="flex md:flex-row-reverse flex-wrap bg-white">
+
+            <div className="w-full md:w-5/6 relative">
+                <p className="absolute right-10 top-5 downloadBtn">
+                    Logout
+                </p>
+                <div className="container pt-4 px-6 overflow-y-scroll">
+                    {children}
+                </div>
+            </div>
+
+            <div className="w-full md:w-1/6 bg-davysGrey px-2 text-center fixed bottom-0 md:pt-8 md:top-0 md:left-0 h-16 md:h-screen md:border-r-4 md:border-gray-600">
+                <SideBar />
+            </div>
+        </div>
+    )
+
+    {/* return (
+        <div className="md:grid md:grid-cols-6 h-screen">
             <div className="hidden md:block md:col-span-1 h-full bg-gray-900">
                 <SideBar />
             </div>
-            {/* <div className="block md:hidden w-full h-11 bg-primary">
-                <svg className="h-6 w-6 text-white-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-            </div> */}
-            <div className="md:col-span-3 overflow-y-scroll bg-gray-100 text-gray-500">
+            <div className="md:col-span-5 overflow-y-scroll bg-white text-gray-600">
                 {children}
             </div>            
         </div>
-    )
+    ) */}
 }
 
 export default AdminLayout

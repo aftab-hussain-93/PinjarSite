@@ -30,7 +30,7 @@
 }
 
 .sidebarItem {
-  @apply text-white font-semibold text-xl capitalize tracking-wider cursor-pointer border-gray-500 border-b p-2 hover:bg-white hover:text-gray-900 text-center;
+  @apply text-white font-semibold text-xl capitalize tracking-wider p-4 text-center;
 }
 
 .halfPageBorderLine {

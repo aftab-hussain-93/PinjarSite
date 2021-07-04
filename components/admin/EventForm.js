@@ -40,7 +40,7 @@ const getAddressObject = (address_components) =>{
     return address;
 }
 
-const EventForm = ({ googleKey }) => {
+const EventForm = ({ googleKey, setAddEvent }) => {
     const [selectedFile, setSelectedFile] = useState(null)
     const [preview, setPreview] = useState()
     const [name, setName] = useState("")
@@ -119,6 +119,8 @@ const EventForm = ({ googleKey }) => {
         // Details of the uploaded file
         console.log(selectedFile);
 
+        // setAddEvent(false)
+
         // axios.post("http://localhost:3000/api/event/add", formData);
     }
 
@@ -126,37 +128,109 @@ const EventForm = ({ googleKey }) => {
         <>
             <div className="flex justify-around items-center">
                 <h1
-                    className="text-3xl pb-4 mt-2 justify-items-center border-gray-300 border-b"
-                >Add a New Event
+                    className="text-3xl pb-4 mt-2 justify-items-center font-semibold text-black"
+                >Create Event
                 </h1>
-                <span className="text-3xl pb-4 mt-2 justify-items-center border-gray-300 border-b">Preview</span>
             </div>
-            <div className="mt-8 p-5 grid grid-cols-3 gap-5 ">
+            {/* <div className="mt-3 p-5 grid grid-cols-1 lg:grid-cols-3 gap-5 "> */}
+            <div className="max-w-md mx-auto bg-gray-50 rounded-lg overflow-hidden md:max-w-lg ">
                 <form
-                    className="flex col-span-2 shadow-md w-full flex-col bg-gray-100 justify-start p-10 "
+                    className="flex col-span-1 lg:col-span-2 shadow-md border w-full flex-col justify-start p-10 "
                     onSubmit={handleSubmit}
+                    autoComplete="off"
                 >
-                    <label className="text-xl mt-2 pl-1">Event Name</label>
-                    <input
-                        className='mt-2 shadow-inner rounded p-2 border-gray-600 border'
-                        type="text"
-                        name="name"
-                        placeholder="Enter event name"
-                        maxLength="30"
-                        onChange={(e) => { setName(e.target.value) }}
-                    />
+                    <div className="mb-1">
+                        <span className="text-lg">Event name</span>
+                        <input
+                            type="text"
+                            maxLength="30"
+                            name="name"
+                            onChange={(e) => { setName(e.target.value) }}
+                            className="h-12 px-3 w-full border-lightPrimary border-2 rounded focus:outline-none focus:border-primary"
+                        />
+                    </div>
+                    <div className="mb-1">
+                        <span className="text-lg">Description</span>
+                        <textarea
+                            type="text"
+                            name="description"
+                            placeholder="Enter event description"
+                            onChange={(e) => { setDescription(e.target.value) }}
+                            className="h-24 py-1 px-3 w-full border-2 border-lightPrimary rounded focus:outline-none focus:border-primary"></textarea>
+                        <div className="mb-1"> <span className="text-sm text-gray-400">You will be able to edit this information later</span> </div>
+                    </div>
+                    <div className="mb-1"> <span className="text-lg">Images</span>
+                        <div className="relative h-32 rounded-lg border-dashed border-2 border-lightPrimary bg-gray-100 flex justify-center items-center">
+                            <div className="absolute">
+                                <div className="flex flex-col items-center"> <i className="fa fa-folder-open fa-3x text-primary"></i> <span className="block text-gray-400 font-normal">Upload Images here</span> </div>
+                            </div>
+                            <input
+                                type="file"
+                                className="h-full w-full opacity-0 cursor-pointer"
+                                name="photo"
+                                accept='image/*'
+                                id="img"
+                                onChange={onSelectFile}                                
+                            />
+                        </div>
+                    </div>
+                    <p className="text-lg mt-2 border-b border-lightPrimary">Venue Details</p>
+                    <div className="mb-1 mt-2">
+                        <span className="text-sm">Full Address</span>
+                        <input
+                            ref={ref}
+                            type="text"
+                            name="google"
+                            value={venue}
+                            onChange={(e) => { setVenue(e.target.value) }}
+                            autoComplete="off"
+                            className="h-12 px-3 w-full border-lightPrimary border-2 rounded focus:outline-none focus:border-primary"
+                        />
+                    </div>                   
+                    
+                    {location ?
+                        (location.formattedAddress === venue ?
+                            <div className="mb-1">
+                                <div className="mb-1">
+                                    <span className="text-sm">City</span>
+                                    <input
+                                        value={location.city}
+                                        readOnly
+                                        disabled
+                                        className="h-12 px-3 w-full border-gray-200 border-2 rounded focus:outline-none focus:gray-200"
+                                    />
+                                </div>
+                                <div className="mb-1">
+                                    <span className="text-sm">State</span>
+                                    <input
+                                        value={location.state}
+                                        readOnly
+                                        disabled
+                                        className="h-12 px-3 w-full border-gray-200 border-2 rounded focus:outline-none focus:gray-200"
+                                    />
+                                </div>
+                                <div className="mb-1">
+                                    <span className="text-sm">Country</span>
+                                    <input
+                                        value={location.country}
+                                        readOnly
+                                        disabled
+                                        className="h-12 px-3 w-full border-gray-200 border-2 rounded focus:outline-none focus:gray-200"
+                                    />
+                                </div>
+                            </div>
+                            : null)
+                        : null}
 
-                    <label className="text-xl mt-2 pl-1">Description</label>
-                    <textarea
-                        className='mt-2 shadow-inner rounded p-2 border-gray-600 border'
-                        type="text"
-                        name="description"
-                        placeholder="Enter event description"
-                        onChange={(e) => { setDescription(e.target.value) }}
-                        rows="5"
-                    />  
-                    <div className="flex items-center mt-2">
-                        {showCalendar && <div>
+                    {/* <div className="flex justify-around items-center relative">
+                        <button
+                            className="btn mt-4 text-primary bg-white border-primary border hover:bg-primary hover:text-white"
+                            onClick={() => {
+                                setShowCalendar(prevState => !prevState)
+                            }}
+                        >Add Event Timings
+                        </button>
+                        {showCalendar && <div className="absolute">
                             <label className="text-xl mr-4 pl-1">Event Date & Time</label>
                             <Datetime
                                 initialValue={new Date()}
@@ -168,72 +242,25 @@ const EventForm = ({ googleKey }) => {
                                     }
                                 }} />
                         </div>}
-                    </div>
-                    
-                    <label className="block border-gray-300 border-b-2 mb-2 text-xl mt-4 pl-1">Location</label>
-                    <input
-                        className='mt-2 shadow-inner rounded p-2 border-gray-600 border'
-                        ref={ref}
-                        type="text"
-                        name="google"
-                        value={venue}
-                        onChange={(e) => { setVenue(e.target.value) }}
-                    />
-                    
-                    {location ?
-                        (location.formattedAddress === venue ?
-                            <div className="grid mt-4 lg:grid-cols-3 grid-cols-1">
-                                <div>
-                                    <label className="block uppercase font-semibold mb-1">City</label>
-                                    <input className='mt-2 shadow-inner rounded p-2 border-gray-600 border' value={location.city} readOnly disabled/>
-                                </div>
-                                <div>
-                                    <label className="block uppercase font-semibold mb-1">State</label>
-                                    <input className='mt-2 shadow-inner rounded p-2 border-gray-600 border' value={location.state} readOnly disabled/>
-                                </div>
-                                <div>
-                                    <label className="block uppercase font-semibold mb-1">Country</label>
-                                    <input className='mt-2 shadow-inner rounded p-2 border-gray-600 border' value={location.country} readOnly disabled/>
-                                </div>
+                    </div> */}
+                    {/* <div className="flex items-center mt-2 relative">
 
-                            </div>
-                            : null)
-                        : null}
-
-                    <div className="flex justify-around items-center">
-                        <label
-                            className='btn mt-4 text-primary bg-white border-primary border hover:bg-primary hover:text-white'
-                            htmlFor="img">Upload Image</label>
-                        <input
-                            name="photo"
-                            type='file'
-                            accept='image/*'
-                            id="img"
-                            onChange={onSelectFile}
-                            hidden
-                        />
-
+                    </div> */}
+                    <div className="mt-3 flex justify-end gap-5">
                         <button
-                            className="btn mt-4 text-primary bg-white border-primary border hover:bg-primary hover:text-white"
-                            onClick={() => {
-                                setShowCalendar(prevState => !prevState)
-                            }}
-                        >Add Event Timings
+                            onClick={() => { setAddEvent(false) }}
+                            className="hover:underline text-primary">Cancel
                         </button>
+                        <button
+                            className="downloadBtn">Create</button>
                     </div>
-
-
-                    <button
-                        className='mt-4 px-4 py-2 text-xl text-center bg-white border-gray-500 border rounded cursor-pointer'
-                        type="submit"
-                        placeholder="Add Event"
-                    >Add Event
-                    </button>
+   
 
                 </form>
-                <div className="w-full col-span-1">
+                {/* <div className="w-full col-span-1 mt-2 lg:m-0">
+                    <p className="text-3xl lg:hidden pb-4 mt-2 justify-items-center font-semibold text-black text-center">Preview</p>
                     <EventCard eventName={name} img={preview} description={description} location={location} dateTime={dateTime}/>
-                </div>
+                </div> */}
             </div>
         </>
         

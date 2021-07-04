@@ -71,8 +71,8 @@ const reports = () => {
                         <h2 className="routeSubheading">Reports</h2>
                         <div className="flex flex-wrap mt-3">
                             {
-                                planAndProgressReports.map(({ reportName, link }) => {
-                                    return <ReportCard reportName={reportName} link={link} />
+                                planAndProgressReports.map(({ reportName, link }, index) => {
+                                    return <ReportCard key={ index } reportName={reportName} link={link} />
                                 }
                                 )
                             }
@@ -85,8 +85,8 @@ const reports = () => {
                         <h2 className="routeSubheading">Audit Reports</h2>
                         <div className="flex flex-wrap mt-3">
                             {
-                                auditReports.map(({ reportName, link }) => {
-                                    return <ReportCard reportName={reportName} link={link} />
+                                auditReports.map(({ reportName, link }, index) => {
+                                    return <ReportCard key={ index } reportName={reportName} link={link} />
                                 }
                                 )
                             }
@@ -94,8 +94,8 @@ const reports = () => {
                         <h2 className="routeSubheading">Budget Reports</h2>
                         <div className="flex flex-wrap mt-3">
                             {
-                                budgetReports.map(({ reportName, link }) => {
-                                    return <ReportCard reportName={reportName} link={link} />
+                                budgetReports.map(({ reportName, link }, index) => {
+                                    return <ReportCard key={index} reportName={reportName} link={link} />
                                 }
                                 )
                             }

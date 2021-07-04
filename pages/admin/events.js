@@ -5,14 +5,24 @@ import styles from '../../styles/admin/Event.module.css'
 
 const dashboard = ({ googleKey }) => {
     const [addEvent, setAddEvent] = useState(false);
+    console.log(addEvent)
     return (
         <>
             <Meta title='Events' />
-            <div className="w-full mt-5 p-5 flex justify-between border-b border-gray-400 pb-5">
-                <span className="text-4xl "> Events Page </span>
-                <span className="btn text-primary bg-white border-primary border hover:bg-primary hover:text-white">Add a New Event</span>
+            <div className="w-full flex justify-between border-b border-primary pb-5">
+                <span className="text-4xl font-semibold capitalize text-primary "> Manage Events </span>
+                {/* <span className="btn text-primary bg-white border-primary border hover:bg-primary hover:text-white">Add a New Event</span> */}
             </div>
-            <EventForm googleKey = {googleKey}/>
+            {addEvent == true && <EventForm googleKey={googleKey} setAddEvent={setAddEvent}/>}
+            {!addEvent && <div className="flex flex-col gap-10 container h-3/6 justify-center items-center p-10">
+                <div className="flex flex-col justify-center items-center bg-gray-100 border gap-10 p-16">
+                    <button onClick={() => { setAddEvent(true) }} className="downloadBtn block w-full text-xl">Add Event</button>
+                    <button onClick={() => { setAddEvent(true) }} className="downloadBtn block w-full text-xl">Edit Event</button>
+                    <button onClick={() => { setAddEvent(true) }} className="downloadBtn block w-full text-xl">Delete Event</button>
+                </div>
+            </div>
+            }
+            
         </>
     )
 }

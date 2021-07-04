@@ -8,7 +8,11 @@ module.exports = {
         secondary: {
           100: '#E2E2D5',
           200: '#888883'
-        }
+        },
+        lightPrimary: '#4df00c',
+        davysGrey: '#494947',
+        scremingGreen: '#35ff69',
+        vividSkyBlue: '#44ccff'
       },
       fontFamily: {
         body: ['Montserrat']
