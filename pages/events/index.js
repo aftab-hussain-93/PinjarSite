@@ -28,7 +28,7 @@ const event = ({ events }) => {
 export async function getServerSideProps(context) {
     const url = process.env.URL
 
-    const res = await fetch(`${url}api/events`)
+    const res = await fetch(`${url}/api/events`)
 
     const data = await res.json()
 
