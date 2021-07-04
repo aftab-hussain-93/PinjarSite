@@ -28,8 +28,9 @@ export default function Home({ events }) {
 
 
 export async function getServerSideProps(context) {
+  const url = process.env.URL
 
-  const res = await fetch("http://localhost:3000/api/events")
+  const res = await fetch(`${url}api/events`)
 
   const data = await res.json()
 
