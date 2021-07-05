@@ -25,7 +25,7 @@ export default function Navbar() {
             <nav className="relative flex flex-wrap items-center justify-around bg-white m-0 h-navHeight shadow-md z-20">
                 <div className="container mx-auto flex flex-wrap items-center justify-between">
                     <div className="w-5/6 lg:pl-14 mx-auto relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-                        <div className="cursor-pointer pl-8 inline-block">
+                        <div className="cursor-pointer pl-2 sm:pl-8 inline-block">
                             <Link href='/'><img
                                 className="w-full h-full"
                                 src="/nav_logo.png"
@@ -34,7 +34,7 @@ export default function Navbar() {
                             </Link>
                         </div>
                         {!navbarOpen && <button
-                            className=" cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+                            className=" cursor-pointer text-xl leading-none px-1 sm:px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
                             type="button"
                             onClick={() => setNavbarOpen(!navbarOpen)}
                         >
@@ -43,7 +43,7 @@ export default function Navbar() {
                             </svg>
                         </button>}
                         {navbarOpen && <button
-                            className=" cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+                            className=" cursor-pointer text-xl leading-none px-1 sm:px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
                             type="button"
                             onClick={() => setNavbarOpen(!navbarOpen)}
                         >

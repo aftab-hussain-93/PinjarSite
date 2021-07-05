@@ -3,7 +3,7 @@ import React from 'react'
 
 const LinkBtn = React.forwardRef(({ onClick, href, title }, ref) => {
     return (
-        <a className="block py-1 text-center md:py-3 pl-1 align-middle text-gray-50 text-xl no-underline border-b-2 border-davysGrey hover:border-primary" href={href} onClick={() => {
+        <a className="block pt-1 text-center md:py-3 pl-1 align-middle text-gray-50 text-xl no-underline sm:border-b-2 sm:border-davysGrey hover:border-primary" href={href} onClick={() => {
             setNavbarOpen(false)
             onClick()
         }

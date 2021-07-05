@@ -1,7 +1,7 @@
 import Meta from '../components/Meta'
 import { Members as messages } from '../locale/messages'
 
-const members = () => {
+const members = ({ images }) => {
     
     return (
         <>
@@ -16,7 +16,7 @@ const members = () => {
                     <h2 className="routeSubheading">State Office Bearers</h2>
                     <div className="w-full mt-2 flex justify-center items-center">
                         <img
-                            src="/State_Office_Bearers.png"
+                            src={images.state_structure}
                             alt="State Office Bearers Image"
                             className="w-full md:w-9/12"
                         />
@@ -29,7 +29,7 @@ const members = () => {
                     </div>
                     <div className="w-full mt-2 flex justify-center items-center">
                         <img
-                            src="/Divisional_Vice_Presidents.png"
+                            src={images.divisional_vice_presidents}
                             alt="Divsional Vice Presidents"
                             className="w-full md:w-8/12"
                         />
@@ -42,7 +42,7 @@ const members = () => {
                     <h2 className="routeSubheading">Structure</h2>
                     <div className="w-full flex justify-center items-center mt-2">
                         <img
-                            src="/District_Structure.png"
+                            src={images.district_structure}
                             alt="District Structure"
                             className="w-full md:w-9/12"
                         />
@@ -55,7 +55,7 @@ const members = () => {
                     <h2 className="routeSubheading">Structure</h2>
                     <div className="w-full flex justify-center items-center mt-2">
                         <img
-                            src="/Taluka_Structure.png"
+                            src={images.taluka_structure}
                             alt="Taluka Structure"
                             className="w-full md:w-9/12"
                         />
@@ -71,5 +71,26 @@ const members = () => {
         </>
     )
 }   
+
+
+export async function getStaticProps(context) {
+    const url = process.env.URL
+
+    const { success, data } = await fetch(`${url}/api/images`).then(res => res.json())
+    const allImages = {}
+    if (success) {
+        data.forEach(item => {
+            if (!(item.name in allImages)) {
+                allImages[item.name] = item.url
+            }
+        })
+    }
+    return {
+        props: {
+            images: allImages
+        }, // will be passed to the page component as props
+    }
+}
+
 
 export default members

@@ -128,18 +128,18 @@ const EventForm = ({ googleKey, setAddEvent }) => {
         <>
             <div className="flex justify-around items-center">
                 <h1
-                    className="text-3xl pb-4 mt-2 justify-items-center font-semibold text-black"
+                    className="text-2xl sm:text-3xl pb-4 mt-2 justify-items-center font-semibold text-black"
                 >Create Event
                 </h1>
             </div>
             {/* <div className="mt-3 p-5 grid grid-cols-1 lg:grid-cols-3 gap-5 "> */}
-            <div className="max-w-md mx-auto bg-gray-50 rounded-lg overflow-hidden md:max-w-lg ">
+            <div className="max-w-md mx-auto bg-gray-50 rounded-lg overflow-hidden md:max-w-xl ">
                 <form
-                    className="flex col-span-1 lg:col-span-2 shadow-md border w-full flex-col justify-start p-10 "
+                    className="flex col-span-1 lg:col-span-2 shadow-md border w-full flex-col justify-start sm:p-10 p-4 gap-5"
                     onSubmit={handleSubmit}
                     autoComplete="off"
                 >
-                    <div className="mb-1">
+                    <div>
                         <span className="text-lg">Event name</span>
                         <input
                             type="text"
@@ -149,7 +149,7 @@ const EventForm = ({ googleKey, setAddEvent }) => {
                             className="h-12 px-3 w-full border-lightPrimary border-2 rounded focus:outline-none focus:border-primary"
                         />
                     </div>
-                    <div className="mb-1">
+                    <div>
                         <span className="text-lg">Description</span>
                         <textarea
                             type="text"
@@ -157,9 +157,9 @@ const EventForm = ({ googleKey, setAddEvent }) => {
                             placeholder="Enter event description"
                             onChange={(e) => { setDescription(e.target.value) }}
                             className="h-24 py-1 px-3 w-full border-2 border-lightPrimary rounded focus:outline-none focus:border-primary"></textarea>
-                        <div className="mb-1"> <span className="text-sm text-gray-400">You will be able to edit this information later</span> </div>
+                        <div> <span className="text-sm text-gray-400">You will be able to edit this information later</span> </div>
                     </div>
-                    <div className="mb-1"> <span className="text-lg">Images</span>
+                    <div> <span className="text-lg">Images</span>
                         <div className="relative h-32 rounded-lg border-dashed border-2 border-lightPrimary bg-gray-100 flex justify-center items-center">
                             <div className="absolute">
                                 <div className="flex flex-col items-center"> <i className="fa fa-folder-open fa-3x text-primary"></i> <span className="block text-gray-400 font-normal">Upload Images here</span> </div>
@@ -190,8 +190,8 @@ const EventForm = ({ googleKey, setAddEvent }) => {
                     
                     {location ?
                         (location.formattedAddress === venue ?
-                            <div className="mb-1">
-                                <div className="mb-1">
+                            <div>
+                                <div>
                                     <span className="text-sm">City</span>
                                     <input
                                         value={location.city}
@@ -200,7 +200,7 @@ const EventForm = ({ googleKey, setAddEvent }) => {
                                         className="h-12 px-3 w-full border-gray-200 border-2 rounded focus:outline-none focus:gray-200"
                                     />
                                 </div>
-                                <div className="mb-1">
+                                <div>
                                     <span className="text-sm">State</span>
                                     <input
                                         value={location.state}
@@ -209,7 +209,7 @@ const EventForm = ({ googleKey, setAddEvent }) => {
                                         className="h-12 px-3 w-full border-gray-200 border-2 rounded focus:outline-none focus:gray-200"
                                     />
                                 </div>
-                                <div className="mb-1">
+                                <div>
                                     <span className="text-sm">Country</span>
                                     <input
                                         value={location.country}

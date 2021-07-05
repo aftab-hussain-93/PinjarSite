@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from '../styles/Login.module.css'
-import { loginUser } from '../lib/auth'
+import { loginUser } from '../utils/auth'
 import Router from 'next/router';
 
 const LoginForm = () => {
