@@ -1,7 +1,16 @@
 import { withIronSession } from "next-iron-session";
 import { userCookieName } from '../../utils/contants'
+import NextCors from 'nextjs-cors';
 
 function handler(req, res, session) {
+
+    await NextCors(req, res, {
+        // Options
+        methods: ['GET', 'POST'],
+        origin: '*',
+        optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+    });
+
     req.session.destroy();
     res.send("Logged out");
 }

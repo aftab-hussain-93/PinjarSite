@@ -1,7 +1,16 @@
 import { withIronSession } from "next-iron-session";
 import { userCookieName } from '../../utils/contants'
+import NextCors from 'nextjs-cors';
 
 async function handler(req, res) {
+
+    await NextCors(req, res, {
+        // Options
+        methods: ['GET', 'POST'],
+        origin: '*',
+        optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+    });
+
     // get user from database then:
     req.session.set("user", {
         id: 230,
