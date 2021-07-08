@@ -29,7 +29,7 @@ export default function Home({ events, images }) {
 }
 
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const url = process.env.URL
 
   const { events } = await fetch(`${url}/api/events`).then(res => res.json())
