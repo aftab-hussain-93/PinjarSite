@@ -60,7 +60,7 @@ const about = ({ images }) => {
 }
 
 export async function getStaticProps(context) {
-    const url = process.env.URL
+    const url = process.env.NEXT_PUBLIC_SERVER_URL
 
     const { success, data } = await fetch(`${url}/api/images`).then(res => res.json())
     const allImages = {}
