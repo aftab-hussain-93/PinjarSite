@@ -7,9 +7,10 @@ const Jumbotron = ({ banner }) => {
         // <div className="bg-cover w-screen h-heroHeight bg-hero-pattern">
         <div className="bg-cover w-screen h-heroHeight relative">
             <div className="w-full h-full absolute">
-                <Image
+                <img
                     src={banner}
-                    layout="fill"
+                    className="w-full h-full"
+                    // layout="fill"
                     alt="Pinjar Image"
                 />
             </div>
