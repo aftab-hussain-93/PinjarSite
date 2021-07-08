@@ -6,13 +6,13 @@ const AdminLayout = ({ children }) => {
     return (
         <div className="flex md:flex-row-reverse flex-wrap bg-white">
 
-            <div className="w-full md:w-5/6 relative mb-20">
+            <div className="w-full md:w-5/6 relative mb-20 sm:mb-2">
                 <button
                     onClick={logoutUser}
                     className="absolute right-7 sm:right-10 sm:top-5 top-4 downloadBtn">
                     Logout
                 </button>
-                <div className="container pt-4 px-6 overflow-y-scroll">
+                <div className="container pt-4 px-6 overflow-y-scroll h-screen">
                     {children}
                 </div>      
             </div>

@@ -17,6 +17,18 @@ export default async (req, res) => {
                 res.status(400).json({ success: false })
             }
             break
+        case 'POST':
+            try {
+                const imageData = req.body
+                const image = await Image.create(imageData)
+                res.status(201).json({ success: true, data: image })
+            } catch (e) {
+                res.status(400).json({ success: false })
+            }
+            break
+        default:
+            res.status(400).json({ success: false })
+            break
     }
 }
 

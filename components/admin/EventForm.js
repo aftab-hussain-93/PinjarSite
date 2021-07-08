@@ -3,7 +3,7 @@ import EventCard from "../Events/EventCard"
 
 import Datetime from 'react-datetime';
 import { usePlacesWidget }  from "react-google-autocomplete";
-
+import axios from 'axios'
 
 const getAddressObject = (address_components) =>{
     let ShouldBeComponent = {
@@ -68,10 +68,6 @@ const EventForm = ({ googleKey, setAddEvent }) => {
         }
     });
 
-    const inputProps = {
-        className: 'p-2 mt-1 border-gray-400 border rounded overflow-hidden cursor-pointer w-full'
-    }
-
     // create a preview as a side effect, whenever selected file is changed
     useEffect(() => {
         if (!selectedFile) {
@@ -102,26 +98,33 @@ const EventForm = ({ googleKey, setAddEvent }) => {
             return
         }
 
-        if (venue !== location.formattedAddress) {
-            console.log("Invalid Address")
-            return
-        }
+        // if (venue !== location.formattedAddress) {
+        //     console.log("Invalid Address")
+        //     return
+        // }
 
         // Create an object of formData
         const formData = new FormData();
         // Update the formData object
         formData.append(
-            "image",
+            "file",
             selectedFile,
             selectedFile.name
         );
+        formData.append('upload_preset', 'knfx6ule')
 
-        // Details of the uploaded file
-        console.log(selectedFile);
-
-        // setAddEvent(false)
-
-        // axios.post("http://localhost:3000/api/event/add", formData);
+        const res = await axios.post("https://api.cloudinary.com/v1_1/dthf9n79u/image/upload", formData);
+        
+        const eventData = {
+            title: name,
+            description,
+            venue: { ...location, fullAddress: location.formattedAddress },
+            photo: res.data.secure_url,
+            eventDate: dateTime
+        }
+        const addEventUrl = process.env.NEXT_PUBLIC_SERVER_URL + '/api/events'
+        await axios.post(addEventUrl, eventData);
+        setAddEvent(false)
     }
 
     return (
@@ -139,15 +142,28 @@ const EventForm = ({ googleKey, setAddEvent }) => {
                     onSubmit={handleSubmit}
                     autoComplete="off"
                 >
-                    <div>
-                        <span className="text-lg">Event name</span>
-                        <input
-                            type="text"
-                            maxLength="30"
-                            name="name"
-                            onChange={(e) => { setName(e.target.value) }}
-                            className="h-12 px-3 w-full border-lightPrimary border-2 rounded focus:outline-none focus:border-primary"
-                        />
+                    <div className="flex justify-between items-center">
+                        <div>
+                            <span className="text-lg">Title</span>
+                            <input
+                                type="text"
+                                maxLength="30"
+                                name="name"
+                                onChange={(e) => { setName(e.target.value) }}
+                                className="h-12 px-3 w-full border-lightPrimary border-2 rounded focus:outline-none  focus:border-primary"
+                                required
+                            />
+                        </div>
+                        <div>
+                            <span className="text-md">Event Date</span> <br/>
+                            <input
+                                type="date"
+                                name="event_date"
+                                className="h-12 px-3 border-lightPrimary border-2 rounded focus:outline-none focus:border-primary"
+                                onChange={(e) => { setDateTime(e.target.value) }}
+                                required
+                            />
+                        </div>
                     </div>
                     <div>
                         <span className="text-lg">Description</span>
@@ -156,7 +172,9 @@ const EventForm = ({ googleKey, setAddEvent }) => {
                             name="description"
                             placeholder="Enter event description"
                             onChange={(e) => { setDescription(e.target.value) }}
-                            className="h-24 py-1 px-3 w-full border-2 border-lightPrimary rounded focus:outline-none focus:border-primary"></textarea>
+                            className="h-24 py-1 px-3 w-full border-2 border-lightPrimary rounded focus:outline-none focus:border-primary"
+                            required
+                        ></textarea>
                         <div> <span className="text-sm text-gray-400">You will be able to edit this information later</span> </div>
                     </div>
                     <div> <span className="text-lg">Images</span>
@@ -170,9 +188,15 @@ const EventForm = ({ googleKey, setAddEvent }) => {
                                 name="photo"
                                 accept='image/*'
                                 id="img"
-                                onChange={onSelectFile}                                
+                                onChange={onSelectFile}
+                                required
                             />
                         </div>
+                        {preview &&
+                            <img
+                                src={preview}
+                                className="p-2 rounded-xl overflow-hidden w-full h-40 sm:h-56 object-cover"
+                            />}
                     </div>
                     <p className="text-lg mt-2 border-b border-lightPrimary">Venue Details</p>
                     <div className="mb-1 mt-2">
@@ -185,11 +209,12 @@ const EventForm = ({ googleKey, setAddEvent }) => {
                             onChange={(e) => { setVenue(e.target.value) }}
                             autoComplete="off"
                             className="h-12 px-3 w-full border-lightPrimary border-2 rounded focus:outline-none focus:border-primary"
+                            required
                         />
                     </div>                   
                     
                     {location ?
-                        (location.formattedAddress === venue ?
+                        // (location.formattedAddress === venue ?
                             <div>
                                 <div>
                                     <span className="text-sm">City</span>
@@ -219,7 +244,7 @@ const EventForm = ({ googleKey, setAddEvent }) => {
                                     />
                                 </div>
                             </div>
-                            : null)
+                            // : null)
                         : null}
 
                     {/* <div className="flex justify-around items-center relative">
@@ -243,16 +268,14 @@ const EventForm = ({ googleKey, setAddEvent }) => {
                                 }} />
                         </div>}
                     </div> */}
-                    {/* <div className="flex items-center mt-2 relative">
-
-                    </div> */}
                     <div className="mt-3 flex justify-end gap-5">
                         <button
                             onClick={() => { setAddEvent(false) }}
                             className="hover:underline text-primary">Cancel
                         </button>
                         <button
-                            className="downloadBtn">Create</button>
+                            className="downloadBtn"
+                        >Create</button>
                     </div>
    
 

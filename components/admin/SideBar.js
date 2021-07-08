@@ -23,27 +23,27 @@ const SideBar = () => {
                         <i className="fas fa-link pr-0 md:pr-3"></i><span className="pb-1 md:pb-0 text-xs md:text-base text-gray-600 md:text-gray-400 block md:inline-block">Link</span>
                     </a> */}
                 </li>
-                <li className="mr-3 flex-1">
+                {/* <li className="mr-3 flex-1">
                     <Link href='/admin/events' passHref><LinkBtn title={`Reports`} /></Link>
                 </li>
                 <li className="mr-3 flex-1">
                     <Link href='/admin/events' passHref><LinkBtn title={`Personalities`} /></Link>
-                </li>
+                </li> */}
                 <li className="mr-3 flex-1">
-                    <Link href='/admin/events' passHref><LinkBtn title={`Images`} /></Link>
+                    <Link href='/admin/images' passHref><LinkBtn title={`Images`} /></Link>
                 </li>
-                <li className="mr-3 flex-1">
+                {/* <li className="mr-3 flex-1">
                     <Link href='/admin/events' passHref><LinkBtn title={`Circulars`} /></Link>
-                </li>
+                </li> */}
                 <li className="mr-3 flex-1">
-                    <Link href='/admin/events' passHref><LinkBtn title={`Users`} /></Link>
+                    <Link href='/admin/users' passHref><LinkBtn title={`Users`} /></Link>
                 </li>
-                <li className="mr-3 flex-1">
+                {/* <li className="mr-3 flex-1">
                     <Link href='/admin/events' passHref><LinkBtn title={`Articles`} /></Link>
                 </li>
                 <li className="mr-3 flex-1">
                     <Link href='/admin/events' passHref><LinkBtn title={`Logout`} /></Link>
-                </li>
+                </li> */}
             </ul>
         </div>
 

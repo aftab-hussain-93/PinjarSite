@@ -1,4 +1,5 @@
 import { withIronSession } from "next-iron-session";
+import { userCookieName } from '../../utils/contants'
 
 function handler(req, res, session) {
     req.session.destroy();
@@ -7,7 +8,7 @@ function handler(req, res, session) {
 
 export default withIronSession(handler, {
     password: process.env.SECRET_COOKIE_PASSWORD,
-    cookieName: "id_token",
+    cookieName: userCookieName,
     // if your localhost is served on http:// then disable the secure flag
     cookieOptions: {
         secure: process.env.NODE_ENV === "production",

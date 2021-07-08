@@ -3,7 +3,7 @@ module.exports = {
     webpack5: false
   },
   images: {
-    domains: ["cdn.statically.io", "upload.wikimedia.org", "localhost"],
+    domains: ["cdn.statically.io", "upload.wikimedia.org", "localhost", "res.cloudinary.com"],
   },
   target: 'serverless'
 };

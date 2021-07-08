@@ -7,8 +7,8 @@ const UpcomingEvents = ({ events }) => {
             <section className="mb-4">
                 <h1 className="routeSubheading">Upcoming</h1>
                 <section className="mt-8 grid lg:grid-cols-2 gap-10">
-                    {events.map(({ id, eventName, img, description, dateTime }, idx) => {
-                        return <EventCard key={id} id={id} eventName={eventName} img={img} description={description} dateTime={dateTime} />
+                    {events.map(({ _id, title, photo, description, dateTime, venue, eventDate }, idx) => {
+                        return <EventCard key={id} id={_id} title={title} photo={photo} description={description} eventDate={eventDate} venue={venue}/>
                     })}
                 </section>
             </section>

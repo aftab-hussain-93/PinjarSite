@@ -1,4 +1,5 @@
 import { withIronSession } from "next-iron-session";
+import { userCookieName } from '../../utils/contants'
 
 async function handler(req, res) {
     // get user from database then:
@@ -12,7 +13,7 @@ async function handler(req, res) {
 
 export default withIronSession(handler, {
     password: process.env.SECRET_COOKIE_PASSWORD,
-    cookieName: "id_token",
+    cookieName: userCookieName,
     // if your localhost is served on http:// then disable the secure flag
     cookieOptions: {
         secure: process.env.NODE_ENV === "production",

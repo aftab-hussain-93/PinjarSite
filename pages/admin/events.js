@@ -5,7 +5,7 @@ import styles from '../../styles/admin/Event.module.css'
 
 const dashboard = ({ googleKey }) => {
     const [addEvent, setAddEvent] = useState(false);
-    console.log(addEvent)
+
     return (
         <>
             <Meta title='Events' />
