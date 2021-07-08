@@ -2,7 +2,7 @@ import { withIronSession } from "next-iron-session";
 import { userCookieName } from '../../utils/contants'
 import NextCors from 'nextjs-cors';
 
-function handler(req, res, session) {
+async function handler(req, res, session) {
 
     await NextCors(req, res, {
         // Options
