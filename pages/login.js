@@ -1,4 +1,3 @@
-// import LoginForm from '../components/LoginForm'
 import Router from 'next/router'
 import { useState } from 'react'
 
@@ -46,9 +45,7 @@ const login = () => {
     return (
         <>
             <Meta title='Admin Login' />
-            {/* <div className={`container ${styles.loginContainer}`}>
-                <LoginForm />
-            </div> */}
+
             <div
                 className="absolute top-0 w-full h-full bg-gray-900"
                 // style={{
