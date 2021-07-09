@@ -10,7 +10,7 @@ const login = () => {
     const handleSubmit = async (event) => {
         event.preventDefault()
         const loginUrl = process.env.NEXT_PUBLIC_SERVER_URL + '/api/login'
-        await axios.get(loginUrl);
+        await axios.get('/api/login');
         Router.push('/admin/dashboard')
         // const { token, error } = await loginUser(email, password)
         // if (error) {
