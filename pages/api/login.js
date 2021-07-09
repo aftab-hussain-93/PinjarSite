@@ -1,46 +1,52 @@
 import { withIronSession } from "next-iron-session";
 import { userCookieName } from '../../utils/contants'
-import NextCors from 'nextjs-cors';
-
+import dbConnect from '../../utils/dbConnect'
+import runMiddleware from '../../utils/runMiddleware'
+import withSession from '../../utils/session'
 import Cors from 'cors'
+import User from '../../models/User'
+import { comparePassword } from '../../utils/auth'
 
 // Initializing the cors middleware
 const cors = Cors({
-    methods: ['GET', 'HEAD'],
+    methods: ['POST'],
 })
 
-// Helper method to wait for a middleware to execute before continuing
-// And to throw an error when an error happens in a middleware
-function runMiddleware(req, res, fn) {
-    return new Promise((resolve, reject) => {
-        fn(req, res, (result) => {
-            if (result instanceof Error) {
-                return reject(result)
-            }
-
-            return resolve(result)
-        })
-    })
-}
-
-async function handler(req, res) {
-
+export default withSession(async (req, res) => {
     await runMiddleware(req, res, cors)
 
-    // get user from database then:
-    req.session.set("user", {
-        id: 230,
-        admin: true,
-    });
-    await req.session.save();
-    res.send("Logged in");
-}
+    const { method } = req
+    await dbConnect()
 
-export default withIronSession(handler, {
-    password: process.env.SECRET_COOKIE_PASSWORD,
-    cookieName: userCookieName,
-    // if your localhost is served on http:// then disable the secure flag
-    cookieOptions: {
-        secure: process.env.NODE_ENV === "production",
-    },
-});
+    switch (method) {
+        case 'POST':
+            try {
+                const userData = req.body
+                const foundUser = await User.findOne({
+                    email: userData.email
+                }).exec()
+
+                if (!foundUser) return res.status(400).json({ status: false, user: true })
+
+                const isLoginValid = comparePassword(foundUser.password, userData.password)
+
+                if (!isLoginValid) return res.status(400).json({ status: false, password: true })
+
+                req.session.set("user", {
+                    id: 230,
+                    admin: true,
+                });
+
+                await req.session.save();
+                // res.send("Logged in");
+
+                res.status(201).json({ data: true })
+            } catch (e) {
+                res.status(500).json({ error: true })
+            }
+            break
+        default:
+            res.status(500).json({ error: true })
+            break
+    }
+})

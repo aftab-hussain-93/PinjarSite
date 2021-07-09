@@ -10,7 +10,7 @@ const MyApp = (values) => {
   const router = useRouter()
   if (['/login'].includes(router.pathname)) {
 
-    return (<Component {...pageProps} />)
+      return (<Component {...pageProps} />)  
 
   } else if (router.pathname.startsWith('/admin')) {
 
@@ -26,7 +26,7 @@ const MyApp = (values) => {
       Router.push('/')
     }
     if (error) {
-      return <div>Failed to load....</div>
+      return <div>Failed to load. Please refresh and try again later...</div>
     }
     return <div>loading...</div>
    }

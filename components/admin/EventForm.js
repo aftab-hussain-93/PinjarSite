@@ -123,7 +123,7 @@ const EventForm = ({ googleKey, setAddEvent }) => {
             eventDate: dateTime
         }
         const addEventUrl = process.env.NEXT_PUBLIC_SERVER_URL + '/api/events'
-        await axios.post(addEventUrl, eventData);
+        await axios.post(`/api/events`, eventData);
         setAddEvent(false)
     }
 

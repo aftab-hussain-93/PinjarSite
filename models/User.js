@@ -1,11 +1,6 @@
-
 import mongoose from 'mongoose'
 
 const UserSchema = new mongoose.Schema({
-    username: {
-        type: String,
-        required: true
-    },
     displayName: {
         type: String,
         required: true
@@ -15,10 +10,13 @@ const UserSchema = new mongoose.Schema({
         required: true
     },
     email: {
-        type: String
+        type: String,
+        required: true,
+        index: { unique: true }
     },
     isAdmin: {
-      type: Boolean  
+        type: Boolean,
+        default: false
     },
     deletedAt: {
         type: Date

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Meta from '../../components/Meta'
 import HomePageImages from '../../components/admin/HomePageImages'
+import AboutPageImages from '../../components/admin/AboutPageImages'
 
 const images = ({ images }) => {
 
@@ -11,8 +12,9 @@ const images = ({ images }) => {
                 <h1 className="text-2xl sm:text-4xl font-semibold capitalize text-primary "> Manage Site Images </h1>
                 {/* <span className="btn text-primary bg-white border-primary border hover:bg-primary hover:text-white">Add a New Event</span> */}
             </div>
-            <div className="container h-full mt-5">                
+            <div className="container mt-5">                
                 <HomePageImages images={images}/>
+                <AboutPageImages images={images}/>
             </div>        
         </>
     )

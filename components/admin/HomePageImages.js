@@ -51,11 +51,12 @@ const images = ({ images }) => {
             url: res.data.secure_url
         }
         const addImageUrl = process.env.NEXT_PUBLIC_SERVER_URL + '/api/images'
-        await axios.post(addImageUrl, imageData);
+        await axios.post(`/api/images`, imageData);
+        window.location.reload();
     }
 
     return (
-        <div className="container h-full mt-5">
+        <div className="container mt-5">
             <div className="flex flex-start gap-10">
                 <h1 className="text-1xl sm:text-2xl font-bold capitalize text-gray-600 block">Banner Image</h1>
                 {banner ?
@@ -87,7 +88,7 @@ const images = ({ images }) => {
                 }
 
             </div>
-            <div className="p-10 h-2/3 w-auto border border-black mt-3">
+            <div className="p-10 border border-gray-400 mt-3 w-full h-heroHeight">
                 <img
                     src={banner ? banner : images.banner}
                     className="w-full h-full"

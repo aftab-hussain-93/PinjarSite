@@ -1,29 +1,22 @@
-import { withIronSession } from "next-iron-session";
-import { userCookieName } from '../../utils/contants'
-import NextCors from 'nextjs-cors';
+import withSession from '../../utils/session'
+import runMiddleware from '../../utils/runMiddleware'
 
-async function handler(req, res, session) {
+import Cors from 'cors'
 
-    await NextCors(req, res, {
-        // Options
-        methods: ['GET', 'POST'],
-        origin: '*',
-        optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-    });
+// Initializing the cors middleware
+const cors = Cors({
+    methods: ['GET'],
+})
+
+
+export default withSession(async (req, res) => {
+
+    await runMiddleware(req, res, cors)
 
     const user = req.session.get("user");
     if (user) {
         res.send({ user });
     } else {
-        res.send({ error:'Not logged in' });
+        res.send({ error: 'Not logged in' });
     }
-}
-
-export default withIronSession(handler, {
-    password: process.env.SECRET_COOKIE_PASSWORD,
-    cookieName: userCookieName,
-    // if your localhost is served on http:// then disable the secure flag
-    cookieOptions: {
-        secure: process.env.NODE_ENV === "production",
-    },
-});
+})
