@@ -23,9 +23,10 @@ const SideBar = () => {
                         <i className="fas fa-link pr-0 md:pr-3"></i><span className="pb-1 md:pb-0 text-xs md:text-base text-gray-600 md:text-gray-400 block md:inline-block">Link</span>
                     </a> */}
                 </li>
-                {/* <li className="mr-3 flex-1">
-                    <Link href='/admin/events' passHref><LinkBtn title={`Reports`} /></Link>
+                <li className="mr-3 flex-1">
+                    <Link href='/admin/reports' passHref><LinkBtn title={`Reports`} /></Link>
                 </li>
+                {/* 
                 <li className="mr-3 flex-1">
                     <Link href='/admin/events' passHref><LinkBtn title={`Personalities`} /></Link>
                 </li> */}
