@@ -7,7 +7,8 @@ const AllEvents = ({ events }) => {
     const upcomingEvents = []
     const pastEvents = []
     events.forEach(event => {
-        if (new Date(event.dateTime) > new Date()) {
+        console.log(event.eventDate)
+        if (new Date(event.eventDate) > new Date()) {
             upcomingEvents.push(event)
         } else {
             pastEvents.push(event)
