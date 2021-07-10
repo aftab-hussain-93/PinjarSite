@@ -150,7 +150,7 @@ const EventForm = ({ googleKey, setAddEvent }) => {
                                 maxLength="30"
                                 name="name"
                                 onChange={(e) => { setName(e.target.value) }}
-                                className="h-12 px-3 w-full border-lightPrimary border-2 rounded focus:outline-none  focus:border-primary"
+                                className="h-12 px-3 w-full  border-2 rounded focus:outline-none  focus:border-primary"
                                 required
                             />
                         </div>
@@ -159,7 +159,7 @@ const EventForm = ({ googleKey, setAddEvent }) => {
                             <input
                                 type="date"
                                 name="event_date"
-                                className="h-12 px-3 border-lightPrimary border-2 rounded focus:outline-none focus:border-primary"
+                                className="h-12 px-3  border-2 rounded focus:outline-none focus:border-primary"
                                 onChange={(e) => { setDateTime(e.target.value) }}
                                 required
                             />
@@ -172,13 +172,13 @@ const EventForm = ({ googleKey, setAddEvent }) => {
                             name="description"
                             placeholder="Enter event description"
                             onChange={(e) => { setDescription(e.target.value) }}
-                            className="h-24 py-1 px-3 w-full border-2 border-lightPrimary rounded focus:outline-none focus:border-primary"
+                            className="h-24 py-1 px-3 w-full border-2  rounded focus:outline-none focus:border-primary"
                             required
                         ></textarea>
                         <div> <span className="text-sm text-gray-400">You will be able to edit this information later</span> </div>
                     </div>
                     <div> <span className="text-lg">Images</span>
-                        <div className="relative h-32 rounded-lg border-dashed border-2 border-lightPrimary bg-gray-100 flex justify-center items-center">
+                        <div className="relative h-32 rounded-lg border-dashed border-2  bg-gray-100 flex justify-center items-center">
                             <div className="absolute">
                                 <div className="flex flex-col items-center"> <i className="fa fa-folder-open fa-3x text-primary"></i> <span className="block text-gray-400 font-normal">Upload Images here</span> </div>
                             </div>
@@ -198,7 +198,7 @@ const EventForm = ({ googleKey, setAddEvent }) => {
                                 className="p-2 rounded-xl overflow-hidden w-full h-40 sm:h-56 object-cover"
                             />}
                     </div>
-                    <p className="text-lg mt-2 border-b border-lightPrimary">Venue Details</p>
+                    <p className="text-lg mt-2 border-b ">Venue Details</p>
                     <div className="mb-1 mt-2">
                         <span className="text-sm">Full Address</span>
                         <input
@@ -208,7 +208,7 @@ const EventForm = ({ googleKey, setAddEvent }) => {
                             value={venue}
                             onChange={(e) => { setVenue(e.target.value) }}
                             autoComplete="off"
-                            className="h-12 px-3 w-full border-lightPrimary border-2 rounded focus:outline-none focus:border-primary"
+                            className="h-12 px-3 w-full  border-2 rounded focus:outline-none focus:border-primary"
                             required
                         />
                     </div>                   

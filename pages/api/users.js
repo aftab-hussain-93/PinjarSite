@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import dbConnect from '../../utils/dbConnect'
-import Event from '../../models/Event'
+import User from '../../models/User'
 import NextCors from 'nextjs-cors';
 
 export default async (req, res) => {
@@ -19,17 +19,17 @@ export default async (req, res) => {
     switch (method) {
         case 'GET':
             try {
-                const allEvents = await Event.find({ })
-                res.status(200).json({ events: [...allEvents] })
+                const allusers = await User.find({})
+                res.status(200).json({ success: true, users: allusers })
             } catch (error) {
                 res.status(400).json({ success: false })
             }
             break
         case 'POST':
             try {
-                const eventData = req.body
-                const event = await Event.create(eventData)
-                res.status(201).json({ success: true, data: event })
+                const userData = req.body
+                const user = await User.create(userData)
+                res.status(201).json({ success: true, data: user })
             } catch (error) {
                 res.status(400).json({ success: false })
             }
@@ -38,6 +38,5 @@ export default async (req, res) => {
             res.status(400).json({ success: false })
             break
     }
-    
-}
 
+}
