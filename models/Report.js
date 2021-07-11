@@ -11,6 +11,10 @@ const ReportSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    type: {
+        type: String,
+        enum: ['audit', 'plan_progress', 'budget']
+    },
     url: {
         type: String,
         required: true

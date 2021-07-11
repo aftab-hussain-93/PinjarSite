@@ -14,7 +14,6 @@ const EventCard = ({ id, title, photo, description, eventDate, venue, eventCreat
 
     return (
         <article className="eventCard h-65 ">
-            {/* <img src="/portrait_pic.jpg" alt="stew" className="w-full h-32 sm:h-56 object-cover" /> */}
             <img src={photo} className="w-full h-40 sm:h-56 object-cover" />
             <div className="m-4">
                 <div className="flex justify-between">
@@ -30,11 +29,11 @@ const EventCard = ({ id, title, photo, description, eventDate, venue, eventCreat
                     <button onClick={() => setShowModal(true)} className="text-primary text-sm font-bold cursor-pointer tracking-wider hover:text-gray-500">More Details</button>
                 </div>
             </div>
-            <div className="badge border-2 border-gray-400">
-                <svg className="w-5 block" xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="badge border border-gray-400 shadow-md">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-                <p className='ml-1 px-2 uppercase'>{date}</p>
+                <p className='ml-1 px-1 capitalize text-xs'>{date}</p>
             </div>
 
             {showModal ? (

@@ -77,7 +77,7 @@ const users = ({ userList }) => {
                             autoComplete="off"
                         >
                             <div>
-                                <span>User Type</span>
+                                <span className="text-md font-semibold">User Type</span>
                                 <div className="mt-2">
                                     <label className="inline-flex items-center">
                                         <input
@@ -105,7 +105,7 @@ const users = ({ userList }) => {
                             </div>
                             <div>
                                 <div className="flex justify-between items-center">
-                                    <span className="text-md">Name</span>
+                                    <span className="text-md font-semibold">Name</span>
                                     {nameError && <span className="text-sm text-red-500">* Invalid</span>}
                                 </div>
                                 <input
@@ -123,7 +123,7 @@ const users = ({ userList }) => {
                             </div>
                             <div>
                                 <div className="flex justify-between items-center">
-                                    <span className="text-md">Email</span>
+                                    <span className="text-md font-semibold">Email</span>
                                     {emailError && <span className="text-sm text-red-500">* Invalid</span>}
                                 </div>
                                 <input
@@ -141,7 +141,7 @@ const users = ({ userList }) => {
 
                             <div>
                                 <div className="flex justify-between items-center">
-                                    <span className="text-md">Password</span>
+                                    <span className="text-md font-semibold">Password</span>
                                     {passwordError && <span className="text-sm text-red-500">* Invalid</span>}
                                 </div>                                
                                 <input
@@ -159,7 +159,7 @@ const users = ({ userList }) => {
                             </div>
                             <div>
                                 <div className="flex justify-between items-center">
-                                    <span className="text-md">Confirm Password</span>
+                                    <span className="text-md font-semibold">Confirm Password</span>
                                     {passwordError && <span className="text-sm text-red-500">* Invalid</span>}
                                 </div>                                
                                 <input

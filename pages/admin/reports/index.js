@@ -1,5 +1,5 @@
 import axios from 'axios'
-import Meta from '../../components/Meta'
+import Meta from '../../../components/Meta'
 
 
 const users = ({ userList }) => {
@@ -36,6 +36,9 @@ const users = ({ userList }) => {
                                             Upload Date
                                         </th>
                                         <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Type
+                                        </th>
+                                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Uploaded By
                                         </th>
                                         <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -60,7 +63,9 @@ const users = ({ userList }) => {
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap">
                                                         <div className="text-sm text-gray-900">{user.email}</div>
-                                                        {/* <div className="text-sm text-gray-500">Optimization</div> */}
+                                                    </td>
+                                                    <td className="px-6 py-4 whitespace-nowrap">
+                                                        <div className="text-sm text-gray-900">{user.email}</div>
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap">
                                                         {!user.deletedAt ? (<span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
