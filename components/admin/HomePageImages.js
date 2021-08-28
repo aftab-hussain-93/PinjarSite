@@ -58,7 +58,7 @@ const images = ({ images }) => {
     return (
         <div className="container mt-5">
             <div className="flex flex-start gap-10">
-                <h1 className="text-1xl sm:text-2xl font-bold capitalize text-gray-600 block">Banner Image</h1>
+                <h1 className="text-1xl sm:text-2xl font-bold capitalize text-gray-600 block">Banner</h1>
                 {banner ?
                     (<div>
                         <button
@@ -83,7 +83,7 @@ const images = ({ images }) => {
                             onChange={onSelectBanner}
                             hidden
                         />
-                        Upload New Image
+                        Upload
                     </label>)
                 }
 

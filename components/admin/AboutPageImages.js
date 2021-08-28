@@ -86,7 +86,7 @@ const aboutImages = ({ images }) => {
         <div className="mt-8 grid lg:grid-cols-2 gap-10">
             <div className="col-span-1 my-3">
                 <div className="flex flex-start gap-3">
-                    <h1 className="text-1xl sm:text-2xl font-bold capitalize text-gray-600 block">Preamble Image</h1>
+                    <h1 className="text-1xl sm:text-2xl font-bold capitalize text-gray-600 block">Preamble</h1>
                     {preamble ?
                         (<div>
                             <button
@@ -111,7 +111,7 @@ const aboutImages = ({ images }) => {
                                 onChange={onSelectFile}
                                 hidden
                             />
-                            Upload Image
+                            Upload
                         </label>)
                     }
 
@@ -126,7 +126,7 @@ const aboutImages = ({ images }) => {
             </div>
             <div className="col-span-1 my-3">
                 <div className="flex flex-start gap-3">
-                    <h1 className="text-1xl sm:text-2xl font-bold capitalize text-gray-600 block">College Image</h1>
+                    <h1 className="text-1xl sm:text-2xl font-bold capitalize text-gray-600 block">College</h1>
                     {college ?
                         (<div>
                             <button
@@ -151,7 +151,7 @@ const aboutImages = ({ images }) => {
                                 onChange={onSelectFile}
                                 hidden
                             />
-                            Upload Image
+                            Upload
                         </label>)
                     }
 
@@ -192,7 +192,7 @@ const aboutImages = ({ images }) => {
                                 onChange={onSelectFile}
                                 hidden
                             />
-                            Upload Image
+                            Upload 
                         </label>)
                     }
 
@@ -208,7 +208,7 @@ const aboutImages = ({ images }) => {
 
             <div className="col-span-1 my-3">
                 <div className="flex flex-start gap-3">
-                    <h1 className="text-1xl sm:text-2xl font-bold capitalize text-gray-600 block">Shadi Mahal Image</h1>
+                    <h1 className="text-1xl sm:text-2xl font-bold capitalize text-gray-600 block">Shaadi Mahal</h1>
                     {weddingHall ?
                         (<div>
                             <button
@@ -233,7 +233,7 @@ const aboutImages = ({ images }) => {
                                 onChange={onSelectFile}
                                 hidden
                             />
-                            Upload Image
+                            Upload 
                         </label>)
                     }
 
