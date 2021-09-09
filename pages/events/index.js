@@ -1,17 +1,25 @@
+import axios from 'axios'
+import React from 'react'
 import Meta from '../../components/Meta'
 import UpcomingEvents from '../../components/Events/UpcomingEvents'
 import PastEvents from '../../components/Events/PastEvents'
 
-const event = ({ events }) => {
-    const upcomingEvents = []
-    const pastEvents = []
-    events.forEach(event => {
-        if (new Date(event.dateTime) > new Date()) {
-            upcomingEvents.push(event)
-        } else {
-            pastEvents.push(event)
-        }
-    })
+const event = (props) => {
+
+    console.log(props)
+
+    // const [pastEvents, setPastEvents] = React.useState(null);
+    // const [upcomingEvents, setUpcomingEvents] = React.useState(null);
+
+    // React.useEffect(() => {
+    //     fetch('http://localhost:3000/api/v1/events')
+    //         .then(results => results.json())
+    //         .then(data => {
+    //             setPastEvents(data);
+    //             setUpcomingEvents(data);
+    //         });
+    // }, []); // <-- Have to pass in [] here!
+
 
     return (
         <>
@@ -25,17 +33,40 @@ const event = ({ events }) => {
     )
 }
 
-export async function getServerSideProps(context) {
-    const url = process.env.URL
+export const getServerSideProps = async (context) => {
+    const serverUrl = process.env.URL
+    // const [{ data: pastEvents }, { data: upcomingEvents }] = await Promise.all([
+    //     axios.get(`${serverUrl}events/past`),
+    //     axios.get(`${serverUrl}events/upcoming`)
+    // ])
+    
+    // const data = await axios.get(`http://localhost:3000/api/v1/events`)
+    // const resp = await fetch(`https://localhost:3000/api/v1/events`)
+    // const data = await resp.json()
+    try {
+        // const { data } = await axios.get('api/events')
+        const { data } = await fetch(`${serverUrl}/api/events`).then(res => res.json())
+        // const data = await resp.json()
 
-    const res = await fetch(`${url}/api/events`)
+        console.log("IN ssp")
+        console.log(data)
 
-    const data = await res.json()
-
-    return {
-        props: {
-            events: data.events
-        }, // will be passed to the page component as props
+        return {
+            props: {
+                events: {
+                    pastEvents: data,
+                    upcomingEvents: data
+                }
+            }, // will be passed to the page component as props
+        }
+    } catch (e) {
+        console.error(e)
+        return {
+            props: {
+                pastEvents: [],
+                upcomingEvents: []
+            }
+        }
     }
 }
 

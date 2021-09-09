@@ -1,18 +1,13 @@
 import SideBar from './SideBar'
-import Router from 'next/router'
-import axios from 'axios'
 
-const logoutUser = async () => {
-    await axios.get(`/api/logout`)
-    Router.push('/')
-}
+import { logout } from '../../utils/auth'
 
 const AdminLayout = ({ children }) => {
     return (
         <div className="flex md:flex-row-reverse flex-wrap bg-gray-50 h-screen min-h-screen text-gray-500">
             <div className="w-full md:w-5/6 relative mb-20 sm:mb-2">
                 <button
-                    onClick={logoutUser}
+                    onClick={logout}
                     className="absolute right-7 sm:right-10 sm:top-5 top-4 downloadBtn">
                     Logout
                 </button>

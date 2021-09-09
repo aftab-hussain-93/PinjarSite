@@ -5,7 +5,7 @@ import Layout from '../components/Layouts/Layout'
 import AdminLayout from '../components/admin/AdminLayout'
 import '../styles/globals.css'
 
-const MyApp = (values) => {
+const App = (values) => {
   const { Component, pageProps } = values
   const router = useRouter()
   if (['/login'].includes(router.pathname)) {
@@ -13,9 +13,9 @@ const MyApp = (values) => {
       return (<Component {...pageProps} />)  
 
   } else if (router.pathname.startsWith('/admin')) {
-
-    const { data, error } = useSWR('/api/user', (url) => fetch(url).then(r => r.json()))
-
+    const fetcher = url => fetch(url, { credentials: "include" }).then(res => res.json())
+    const serverUrl = 'http://localhost:3000/api/v1/auth/profile'
+    const { data, error } = useSWR(serverUrl, fetcher)
     if (data?.user) {
       return (
         <AdminLayout>
@@ -39,4 +39,4 @@ const MyApp = (values) => {
 
 }
 
-export default MyApp
+export default App

@@ -1,13 +1,16 @@
-import bcrypt from 'bcryptjs'
+import axios from 'axios'
+import Router from 'next/router'
 
-const SALT_ROUNDS = 10
-
-export const generateHash = (password) => {
-    const salt = bcrypt.genSaltSync(SALT_ROUNDS);
-    const hash = bcrypt.hashSync(password, salt);
-    return hash
+export const logout = async () => {
+    await axios.get('http://localhost:3000/api/v1/auth/logout', { withCredentials: true });
+    Router.push('/')
 }
 
-export const comparePassword = (hash, password) => {
-    return bcrypt.compareSync(password, hash);
+export const login = async (userData) => {
+    await axios.post('http://localhost:3000/api/v1/auth/login', userData, { withCredentials: true });
+    Router.push('/admin/dashboard')
+}
+
+export const profile = async () => {
+    await axios.get('http://localhost:3000/api/v1/auth/profile', { withCredentials: true });
 }
