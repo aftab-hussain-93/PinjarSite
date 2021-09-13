@@ -5,22 +5,18 @@
   "scripts": {
     "dev": "next dev -p 5000",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production node server.js",
     "export": "next build && next export"
   },
   "dependencies": {
-    "aws4": "^1.11.0",
     "axios": "^0.21.1",
-    "cloudinary": "^1.26.2",
-    "draft-js": "^0.11.7",
-    "draftjs-to-html": "^0.9.1",
     "moment": "^2.29.1",
     "next": "^11.1.1",
-    "node-pre-gyp": "^0.17.0",
     "react": "^17.0.2",
     "react-datetime": "^3.1.1",
     "react-dom": "^17.0.2",
     "react-google-autocomplete": "^2.4.0",
+    "react-loader-spinner": "^4.0.0",
     "react-modal": "^3.14.3",
     "swr": "^0.5.6"
   },

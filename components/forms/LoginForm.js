@@ -1,6 +1,6 @@
 import React from 'react'
 
-const LoginForm = ({ handleSubmit, credentialError, email, password, setCredential}) => {
+const LoginForm = ({ handleSubmit, credentialError, email, password, setCredential, setCredentialError}) => {
     const inputStyle = "border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
     const errorInput = "border-2 border-red-600 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
 
@@ -38,7 +38,11 @@ const LoginForm = ({ handleSubmit, credentialError, email, password, setCredenti
                                         name="email"
                                         placeholder="Email"
                                         style={{ transition: "all .15s ease" }}
-                                        onChange={(e) => changeFormValue(e.target.name, e.target.value)}
+                                        onChange={(e) => {
+                                            setCredentialError({email: false, password: false})
+                                            changeFormValue(e.target.name, e.target.value)
+                                        }
+                                        }
                                         value={email}
                                         required
                                     />
@@ -60,7 +64,11 @@ const LoginForm = ({ handleSubmit, credentialError, email, password, setCredenti
                                         name="password"
                                         placeholder="Password"
                                         style={{ transition: "all .15s ease" }}
-                                        onChange={(e) => changeFormValue(e.target.name, e.target.value)}
+                                        onChange={(e) => {
+                                            setCredentialError({ email: false, password: false })
+                                            changeFormValue(e.target.name, e.target.value)
+                                        }
+                                        }
                                         value={password}
                                         required
                                     />

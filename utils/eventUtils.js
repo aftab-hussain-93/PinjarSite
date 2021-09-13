@@ -1,5 +1,8 @@
 import Router from 'next/router'
 import moment from 'moment'
+import useSWR from 'swr';
+import { apiUrl } from '../config/api.config';
+import { fetcher } from './apiFetcher'
 
 export const getAddressObject = (address_components) => {
     let ShouldBeComponent = {
@@ -41,9 +44,21 @@ export const isValidDate = (current) => {
     return current.isAfter(yesterday);
 };
 
-
-
 export const cancelAddEvent = (e) => {
     e.preventDefault()
     return Router.push('/admin/events')
+}
+
+export const useAdminEvents = () => {
+    const url = `${apiUrl}/events/user`
+    const { data, error, mutate } = useSWR(url, fetcher)
+    let isError = false
+    if (data && !(Array.isArray(data))) isError = true
+
+    return {
+        events: data,
+        isLoading: !error && !data,
+        isError: error || isError,
+        mutate
+    }
 }
