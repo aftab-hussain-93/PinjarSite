@@ -1,35 +1,44 @@
 import { useState } from 'react'
 import Router from 'next/router'
-import useSWR from 'swr'
 // Components
 import Meta from '../../../components/Meta'
+import FullPageLoader from '../../../components/Loaders/FullPageLoader'
+import Alert from '../../../components/Alerts/alert'
 // Config
 import { apiUrl } from '../../../config/api.config'
 // Helpers
-import { fetcher } from '../../../utils/apiFetcher'
+import { useProfile, useAdminUsers } from '../../../utils/auth'
 
-const users = ({ users }) => {
-    const [userList, setuserList] = useState(users)
-    const { data, error } = useSWR(`${apiUrl}/auth/profile`, fetcher)
-    if (error || data.error) return Router.push('/')
-    const loggedInUser = data.user
+const users = () => {
+    const [{show, message, type}, setalert] = useState({ show: false, message: "", type: "info" })
+    const { users, isLoading: usersLoading, isError: usersError, mutate } = useAdminUsers()
+    const { user: loggedInUser, isLoading, isError } = useProfile()
+    
+    
+    if (isError) Router.push('/')
     if (!loggedInUser.isAdmin) Router.push('/dashboard')
+    if (usersLoading || isLoading) return (<FullPageLoader />)
 
-    const deleteUser = async (userId) => {
-        const resp = await fetch(`${apiUrl}/users/delete/${userId}`, { credentials: "include" }).then(res => res.json())
-        if (resp.status === "ok") {
-            const newUsers = await fetch(`${apiUrl}/users`, { credentials: "include" }).then(res => res.json())
-            setuserList(newUsers)
-        } else {
-            console.error(`Could not delete user`)
-        }
+    const showAlertWithMessage = (message, type) => {
+        setalert({ show: true, message, type})
+    }
+
+    const closeAlertBox = () => {
+        setalert({ show: false, message: "", type: "info" })
+    }
+
+    const toggleStatus = async (userId) => {
+        await fetch(`${apiUrl}/users/status/${userId}`, { credentials: "include" }).then(res => res.json())
+        mutate()
+        showAlertWithMessage('User Status Updated', 'info')
     }
 
     return (
         <>
             <Meta title='User Management' />
+            <Alert message={message} showAlert={show} closeAlertBox={closeAlertBox} type={type}/>
             <div className="w-full flex justify-between border-b border-primary pb-5">
-                <span className="text-2xl sm:text-4xl font-semibold leading-normal capitalize text-primary "> User Management </span>
+                <span className="text-2xl sm:text-4xl font-semibold leading-normal capitalize text-primary ">User Management</span>
             </div>
             <div className="container mt-5">
                 <div className="container mt-5">
@@ -69,7 +78,7 @@ const users = ({ users }) => {
                                 </thead>
                                 <tbody className="bg-white divide-y divide-gray-200">
                                     {
-                                        userList && userList.map((user, key) => {
+                                        users && users.map((user, key) => {
                                             return (
                                                 <tr key={key}>
                                                     <td className="px-6 py-4 whitespace-nowrap">
@@ -93,7 +102,7 @@ const users = ({ users }) => {
                                                         {user.isAdmin ? `Admin` : `Default`}
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                        <button onClick={() => { deleteUser(user.id) }} className="text-primary hover:text-black">Delete</button>
+                                                        <button onClick={() => { toggleStatus(user.id) }} className="text-primary hover:text-black">{user.isActive? 'Delete':'Active'}</button>
                                                     </td>
                                                 </tr>
                                             )
@@ -111,19 +120,4 @@ const users = ({ users }) => {
     )
 }
 
-export const getServerSideProps = async (context) => {
-    const ctxCookie = context.req ? context.req.headers.cookie : null
-
-    const users = await fetch(`${apiUrl}/users`, {
-        headers: {
-            cookie: ctxCookie
-        }
-    }).then(res => res.json())
-
-    return {
-        props: {
-            users
-        }, // will be passed to the page component as props
-    }
-}
 export default users

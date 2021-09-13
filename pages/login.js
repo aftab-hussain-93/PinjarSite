@@ -5,9 +5,11 @@ import LoginForm from '../components/forms/LoginForm'
 
 import { login as loginUser } from '../utils/auth'
 import Router from 'next/router'
+// SWR Hooks
+import { useProfile } from '../utils/auth';
 
 const login = () => {
-
+    const { mutate } = useProfile()
     const [{ email, password }, setCredential] = useState({ email: "", password: "" })
     const [credentialError, setCredentialError] = useState({ email: false, password: false })
 
@@ -15,8 +17,7 @@ const login = () => {
         e.preventDefault()
 
         if (!email || email.trim() == "") {
-            setCredentialError(prevState => ({...prevState, email: true}))
-        
+            setCredentialError(prevState => ({...prevState, email: true}))        
             return
         }
         if (!password || password.trim() == "") {
@@ -30,7 +31,10 @@ const login = () => {
         }
         try {
             const { status, error } = await loginUser(userData)
-            if (status == "ok") Router.push('/admin/dashboard')
+            if (status == "ok") {
+                mutate()
+                Router.push('/admin/dashboard')
+            }
             else throw new Error(error)
         } catch (error) {
             console.error(error)
@@ -49,6 +53,7 @@ const login = () => {
             <LoginForm
                 handleSubmit={handleSubmit}
                 credentialError={credentialError}
+                setCredentialError={setCredentialError}
                 setCredential={setCredential}
                 password={password}
                 email={email}

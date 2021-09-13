@@ -10,9 +10,9 @@ export default function Navbar() {
     // for proper handling
     const MyButton = React.forwardRef(({ onClick, href, title }, ref) => {
         return (
-            <a className="block w-full h-full" href={href} onClick={() => {
+            <a className="block w-full h-full" href={href} onClick={(e) => {
                 setNavbarOpen(false)
-                onClick()
+                onClick(e)
             }
             } ref={ref}>
                 {title}

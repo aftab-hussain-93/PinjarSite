@@ -3,8 +3,8 @@ import React from 'react'
 
 const LinkBtn = React.forwardRef(({ onClick, href, title }, ref) => {
     return (
-        <a className="block pt-1 text-left md:py-3 pl-2 align-middle text-gray-50 text-md no-underline sm:border-b-2 sm:border-davysGrey hover:border-primary" href={href} onClick={() => {
-            onClick()
+        <a className="block pt-1 text-left md:py-3 pl-2 align-middle text-gray-50 text-md no-underline sm:border-b-2 sm:border-davysGrey hover:border-primary" href={href} onClick={(e) => {
+            onClick(e)
         }
         } ref={ref}>
             {title}

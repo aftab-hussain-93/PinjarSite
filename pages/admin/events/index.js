@@ -1,15 +1,16 @@
 import { useState } from 'react';
-import useSWR from 'swr'
 // Components
 import Meta from '../../../components/Meta'
 import EventModal from '../../../components/Events/EventModal'
-
+import FullPageLoader from '../../../components/Loaders/FullPageLoader';
 // Config
 import { apiUrl, serverUrl } from '../../../config/api.config'
 // Helpers
 import { formatFullDate } from '../../../utils/dateUtils'
-import Router  from 'next/router';
-import { fetcher } from '../../../utils/apiFetcher';
+import Router from 'next/router';
+// SWR Hooks
+import { useAdminEvents } from '../../../utils/eventUtils';
+import { useProfile } from '../../../utils/auth';
 
 const setHidden = () => { // Hiding scroll bar when modal is open
     if (document.body.style.overflow !== "hidden") {
@@ -19,19 +20,18 @@ const setHidden = () => { // Hiding scroll bar when modal is open
     }
 }
 
-
-const adminEvents = ({ events }) => {
+const adminEvents = () => {
     const [showModal, setShowModal] = useState(false);
     const [event, setModalEvent] = useState(null)
-    const [allEvents, setAllEvents] = useState(events)
-    const { data, error } = useSWR(`${apiUrl}/auth/profile`, fetcher)
-    if (error || data.error) return Router.push('/')
-    const loggedInUser = data.user
-    
+    const { events, isLoading: eventsLoading, isError: eventsError, mutate } = useAdminEvents()
+    const { user: loggedInUser, isLoading, isError } = useProfile()
+
+    if (isError) Router.push('/')
+    if (eventsLoading || isLoading) return (<FullPageLoader />)
+
     const deleteEvent = async (eventId) => {
         await fetch(`${apiUrl}/events/delete/${eventId}`, { credentials: "include" })
-        const newEvents = await fetch(`${apiUrl}/events/user`, { credentials: "include" }).then(res => res.json())
-        setAllEvents(newEvents)
+        mutate()
     }
 
     const closeModal = () => {
@@ -48,7 +48,7 @@ const adminEvents = ({ events }) => {
         setModalEvent(event)
         openModal()
     }
- 
+
     return (
         <>
             <Meta title='Events Management' />
@@ -99,7 +99,7 @@ const adminEvents = ({ events }) => {
                                 </thead>
                                 <tbody className="bg-white divide-y divide-gray-200">
                                     {
-                                        allEvents && allEvents.map(({ id, title, image, description, eventDate, city, state, createdBy, country, createdAt, creator: { firstName, lastName } }, key) => {
+                                        events && events.map(({ id, title, image, description, eventDate, city, state, createdBy, country, createdAt, creator: { firstName, lastName } }, key) => {
                                             return (
                                                 <tr key={key}>
                                                     <td className="px-6 py-4 whitespace-nowrap">
@@ -123,7 +123,7 @@ const adminEvents = ({ events }) => {
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                         <button
-                                                            onClick={() => { viewEvent({ title, description, eventDate, city, state, country, firstName, imagePath: serverUrl + image}) }}
+                                                            onClick={() => { viewEvent({ title, description, eventDate, city, state, country, firstName, imagePath: serverUrl + image }) }}
                                                             className="text-primary hover:text-black">View</button>
                                                     </td>
                                                     {loggedInUser && (loggedInUser.isAdmin || loggedInUser.id === createdBy) &&
@@ -152,22 +152,5 @@ const adminEvents = ({ events }) => {
         </>
     )
 }
-
-export const getServerSideProps = async (context) => {
-    const ctxCookie = context.req ? context.req.headers.cookie : null
-
-    const events = await fetch(`${apiUrl}/events/user`, {
-        headers: {
-            cookie: ctxCookie
-        }
-    }).then(res => res.json())
-
-    return {
-        props: {
-            events
-        }, // will be passed to the page component as props
-    }
-}
-
 
 export default adminEvents
