@@ -2,16 +2,11 @@ import DownloadSymbol from "../DownloadSymbol"
 
 const HalfWidthLayout = ({ headline, photo, htmlContent, subheadline, downloadLink, downloadIcon = false }) => {
 
-    if (!photo) {
-        photo = `/events/event_img1.jpeg`
-    }
-
     if (!htmlContent) {
         htmlContent = `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> <br />
             <p>kannada text goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
             `
     }
-
 
     return (
         <section className="lg:grid lg:grid-cols-2 gap-5 mb-4">

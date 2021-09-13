@@ -24,7 +24,7 @@ const BenefitItem = ({ headline, photo, htmlContent }) => {
                     dangerouslySetInnerHTML={{ __html: htmlContent }}>
                 </div>
                 <div className="text-primary text-sm font-bold cursor-pointer tracking-wider hover:text-gray-500">
-                    <Link href='/personalities'>More Details</Link>
+                    <Link href='#'>More Details</Link>
                 </div>
             </div>
         </div>

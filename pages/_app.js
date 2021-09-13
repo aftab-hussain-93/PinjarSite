@@ -1,32 +1,38 @@
-import "react-datetime/css/react-datetime.css";
 import Router, { useRouter } from 'next/router'
 import useSWR from 'swr'
+// Styles
+import '../styles/globals.css'
+import "react-datetime/css/react-datetime.css";
+// Components
 import Layout from '../components/Layouts/Layout'
 import AdminLayout from '../components/admin/AdminLayout'
-import '../styles/globals.css'
+// Config
+import { apiUrl } from '../config/api.config';
+import { fetcher } from '../utils/apiFetcher'
 
 const App = (values) => {
   const { Component, pageProps } = values
   const router = useRouter()
+  const serverUrl = `${apiUrl}/auth/profile`
+  const { data, error } = useSWR(serverUrl, fetcher)
+  const loggedInUser = data ? (data.user) : undefined
+  const hasErroredOut = error || data?.error
+  
   if (['/login'].includes(router.pathname)) {
-
-      return (<Component {...pageProps} />)  
-
-  } else if (router.pathname.startsWith('/admin')) {
-    const fetcher = url => fetch(url, { credentials: "include" }).then(res => res.json())
-    const serverUrl = 'http://localhost:3000/api/v1/auth/profile'
-    const { data, error } = useSWR(serverUrl, fetcher)
-    if (data?.user) {
+    if (loggedInUser) {
+      return Router.push('/admin/dashboard')
+    } else {
+      return (<Component {...pageProps} />)
+    }
+  } else if (router.pathname.startsWith('/admin')) {    
+    if (loggedInUser) {
       return (
         <AdminLayout>
           <Component {...pageProps} />
         </AdminLayout>)
     }
-    if (data?.error) {
-      Router.push('/')
-    }
-    if (error) {
-      return <div>Failed to load. Please refresh and try again later...</div>
+    if (hasErroredOut) {
+      return Router.push('/')
     }
     return <div>loading...</div>
    }

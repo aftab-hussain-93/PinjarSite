@@ -23,8 +23,7 @@ module.exports = {
       },
       backgroundImage: {
         "hero-pattern":
-          // "url('https://cdn.statically.io/gh/afkcodes/megbytdev-web/main/public/bg.svg')",
-          "url('../public/jumbotron_img.png')",
+          "url('https://cdn.statically.io/gh/aftab-hussain-93/PinjarSite/main/public/jumbotron_img.png')"
       },
       maxWidth: {
         '1/4': '25%',
