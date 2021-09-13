@@ -1,16 +1,25 @@
 import axios from 'axios'
 import Router from 'next/router'
+import { apiUrl } from '../config/api.config'
 
 export const logout = async () => {
-    await axios.get('http://localhost:3000/api/v1/auth/logout', { withCredentials: true });
+    await axios.get(`${apiUrl}/auth/logout`, { withCredentials: true });
     Router.push('/')
 }
 
 export const login = async (userData) => {
-    await axios.post('http://localhost:3000/api/v1/auth/login', userData, { withCredentials: true });
-    Router.push('/admin/dashboard')
+    try {
+        await axios.post(`${apiUrl}/auth/login`, userData, { withCredentials: true });
+        return {
+            status: "ok"
+        }
+    } catch (e) {
+        return {
+            error: e
+        }
+    }
 }
 
 export const profile = async () => {
-    await axios.get('http://localhost:3000/api/v1/auth/profile', { withCredentials: true });
+    await axios.get(`${apiUrl}/auth/profile`, { withCredentials: true });
 }

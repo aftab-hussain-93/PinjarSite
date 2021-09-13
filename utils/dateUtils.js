@@ -17,3 +17,15 @@ export const getMonthName = (monthNum) => {
     }
     return null
 }
+
+export const formatDate = (date) => {
+    const dateObj = new Date(date)
+    const [month, day, year] = [dateObj.getMonth(), dateObj.getDate(), dateObj.getFullYear()];
+    const monthName = getMonthName(month)
+    return `${day}-${monthName}-${year}`
+}
+
+export const formatFullDate = (date) => {
+    const dateObj = new Date(date)
+    return `${dateObj.toDateString()} ${dateObj.toLocaleTimeString()}`
+}

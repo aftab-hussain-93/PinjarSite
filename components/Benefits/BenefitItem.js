@@ -1,17 +1,14 @@
 import Link from 'next/link'
+import { serverUrl } from '../../config/api.config'
 
 const BenefitItem = ({ headline, photo, htmlContent }) => {
-
-    if (!photo) {
-        photo = `/events/event_img1.jpeg`
-    }
+    photo = `${serverUrl}uploads/images/event_img1.jpeg`
     
     if (!htmlContent) {
         htmlContent = `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> <br />
             <p>kannada text goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
             `
     }
-
 
     return (
         <div className="card">
@@ -24,7 +21,7 @@ const BenefitItem = ({ headline, photo, htmlContent }) => {
                     dangerouslySetInnerHTML={{ __html: htmlContent }}>
                 </div>
                 <div className="text-primary text-sm font-bold cursor-pointer tracking-wider hover:text-gray-500">
-                    <Link href='/personalities'>More Details</Link>
+                    <Link href='#'>More Details</Link>
                 </div>
             </div>
         </div>

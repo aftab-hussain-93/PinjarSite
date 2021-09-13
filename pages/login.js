@@ -4,6 +4,7 @@ import Meta from '../components/Meta'
 import LoginForm from '../components/forms/LoginForm'
 
 import { login as loginUser } from '../utils/auth'
+import Router from 'next/router'
 
 const login = () => {
 
@@ -28,7 +29,9 @@ const login = () => {
             password
         }
         try {
-            await loginUser(userData)
+            const { status, error } = await loginUser(userData)
+            if (status == "ok") Router.push('/admin/dashboard')
+            else throw new Error(error)
         } catch (error) {
             console.error(error)
             console.error("Could not login")

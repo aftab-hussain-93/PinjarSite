@@ -1,8 +1,29 @@
-import axios from 'axios'
+import { useState } from 'react'
+import Router from 'next/router'
+import useSWR from 'swr'
+// Components
 import Meta from '../../../components/Meta'
+// Config
+import { apiUrl } from '../../../config/api.config'
+// Helpers
+import { fetcher } from '../../../utils/apiFetcher'
 
+const users = ({ users }) => {
+    const [userList, setuserList] = useState(users)
+    const { data, error } = useSWR(`${apiUrl}/auth/profile`, fetcher)
+    if (error || data.error) return Router.push('/')
+    const loggedInUser = data.user
+    if (!loggedInUser.isAdmin) Router.push('/dashboard')
 
-const users = ({ userList }) => {
+    const deleteUser = async (userId) => {
+        const resp = await fetch(`${apiUrl}/users/delete/${userId}`, { credentials: "include" }).then(res => res.json())
+        if (resp.status === "ok") {
+            const newUsers = await fetch(`${apiUrl}/users`, { credentials: "include" }).then(res => res.json())
+            setuserList(newUsers)
+        } else {
+            console.error(`Could not delete user`)
+        }
+    }
 
     return (
         <>
@@ -19,7 +40,6 @@ const users = ({ userList }) => {
                             className="rounded py-1 px-2  sm:py-1 sm:px-2 font-normal capitalize cursor-pointer tracking-tight sm:tracking-wide hover:bg-white hover:text-primary border-primary border bg-primary text-white">
                             Add User
                         </a>
-                        {/* <span className="rounded py-1 px-2  sm:py-1 sm:px-2 font-semibold capitalize cursor-pointer tracking-tight sm:tracking-wide hover:bg-white hover:text-primary border-primary border bg-primary text-white">Delete</span> */}
                     </div>
                 </div>
             </div>
@@ -49,22 +69,21 @@ const users = ({ userList }) => {
                                 </thead>
                                 <tbody className="bg-white divide-y divide-gray-200">
                                     {
-                                        userList && userList.map((user, idx) => {
+                                        userList && userList.map((user, key) => {
                                             return (
-                                                <tr key={idx}>
+                                                <tr key={key}>
                                                     <td className="px-6 py-4 whitespace-nowrap">
                                                         <div className="flex items-center">
                                                             <div className="text-sm font-medium text-gray-900">
-                                                                {user.displayName}
+                                                                {user.firstName} {user.lastName}
                                                             </div>
                                                         </div>
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap">
                                                         <div className="text-sm text-gray-900">{user.email}</div>
-                                                        {/* <div className="text-sm text-gray-500">Optimization</div> */}
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap">
-                                                        {!user.deletedAt ? (<span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                        {user.isActive ? (<span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                                             Active
                                                         </span>) : (<span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
                                                             Deleted
@@ -74,7 +93,7 @@ const users = ({ userList }) => {
                                                         {user.isAdmin ? `Admin` : `Default`}
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                        <a href="#" className="text-primary hover:text-black">Edit</a>
+                                                        <button onClick={() => { deleteUser(user.id) }} className="text-primary hover:text-black">Delete</button>
                                                     </td>
                                                 </tr>
                                             )
@@ -92,24 +111,19 @@ const users = ({ userList }) => {
     )
 }
 
-export async function getServerSideProps(context) {
-    const url = process.env.NEXT_PUBLIC_SERVER_URL
+export const getServerSideProps = async (context) => {
+    const ctxCookie = context.req ? context.req.headers.cookie : null
 
-    try {
-        const { data: { users } } = await axios.get(`${url}/api/users`)
+    const users = await fetch(`${apiUrl}/users`, {
+        headers: {
+            cookie: ctxCookie
+        }
+    }).then(res => res.json())
 
-        return {
-            props: {
-                userList: users || []
-            }, // will be passed to the page component as props
-        }
-    } catch (error) {
-        console.log("Errored out while getting users")
-        console.log(error)
-        return {
-            props: {}
-        }
+    return {
+        props: {
+            users
+        }, // will be passed to the page component as props
     }
 }
-
 export default users
