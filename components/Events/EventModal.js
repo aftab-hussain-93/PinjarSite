@@ -31,17 +31,14 @@ const EventModal = ({ showModal, closeModal, title, imagePath, eventDate, firstN
                     {title}
                 </h3>
                 <img src={imagePath} className="h-80 object-cover mx-auto" />
-                <div className="relative flex-auto flex-wrap min-w-max break-all">
-                    <div className="block md:flex flex-wrap items-start justify-between border-b border-solid gap-10 sm:gap-20 md:gap-30 lg:gap-40 pt-4 pb-2">
-                        <p className="text-md sm:text-lg font-semibold text-blueGray-500">{formatFullDate(eventDate)}</p>
-                        <p className="text-md sm:text-lg font-semibold capitalize text-blueGray-500">Posted By {firstName}</p>
-                    </div>
+                <div className="border-b border-solid">
+                    <p className="text-sm capitalize pt-2 text-blueGray-500">{formatFullDate(eventDate)}</p>
+                    <p className="text-sm capitalize pt-2 text-blueGray-500">Posted By <strong>{firstName}</strong></p>
                     {city && state && country &&
-                        <p className="text-md sm:text-lg font-semibold capitalize pt-2 text-blueGray-500">{city}, {state}, {country}
+                        <p className="text-sm capitalize pt-2 text-blueGray-500 ">{city}, {state}, {country}
                         </p>
                     }
                 </div>
-
                 <p className="my-4 text-blueGray-500 text-md sm:text-lg leading-relaxed">
                     {description}
                 </p>

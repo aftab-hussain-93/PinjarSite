@@ -6,7 +6,7 @@ const FullPageLoader = () => {
         <div className="w-screen h-screen flex justify-center items-center">
             <Loader
                 type="Puff"
-                color="#00BFFF"
+                color="#30AB11"
                 height={100}
                 width={100}
             />

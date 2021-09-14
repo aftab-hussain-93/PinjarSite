@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import { useProfile } from '../../utils/auth'
 
 const LinkBtn = React.forwardRef(({ onClick, href, title }, ref) => {
     return (
@@ -13,12 +14,17 @@ const LinkBtn = React.forwardRef(({ onClick, href, title }, ref) => {
 })
 
 const SideBar = () => {
+    const { user, isLoading, isError } = useProfile()
+
     return (
         <div className="md:relative mx-auto">
             <ul className="list-reset flex flex-row md:flex-col">
                 <li className="mr-3 flex-1">
-                    <Link href='/admin/users' passHref><LinkBtn title={`User Management`} /></Link>
+                    <Link href='/admin/dashboard' passHref><LinkBtn title={`Dashboard`} /></Link>
                 </li>
+                {(user && user.isAdmin)? (<li className="mr-3 flex-1">
+                    <Link href='/admin/users' passHref><LinkBtn title={`User Management`} /></Link>
+                </li>):null}
                 <li className="mr-3 flex-1">
                     <Link href='/admin/events' passHref><LinkBtn title={`Event Management`} /></Link>
                 </li>

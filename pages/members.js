@@ -17,7 +17,7 @@ const members = () => {
                     <h2 className="routeSubheading">State Office Bearers</h2>
                     <div className="w-full mt-2 flex justify-center items-center">
                         <img
-                            src={`${serverUrl}uploads/images/State_Office_Bearers.png`}
+                            src={`${serverUrl}/uploads/images/State_Office_Bearers.png`}
                             alt="State Office Bearers Image"
                             className="w-full md:w-9/12"
                         />
@@ -30,7 +30,7 @@ const members = () => {
                     </div>
                     <div className="w-full mt-2 flex justify-center items-center">
                         <img
-                            src={`${serverUrl}uploads/images/Divisional_Vice_Presidents.png`}
+                            src={`${serverUrl}/uploads/images/Divisional_Vice_Presidents.png`}
                             alt="Divsional Vice Presidents"
                             className="w-full md:w-8/12"
                         />
@@ -43,7 +43,7 @@ const members = () => {
                     <h2 className="routeSubheading">Structure</h2>
                     <div className="w-full flex justify-center items-center mt-2">
                         <img
-                            src={`${serverUrl}uploads/images/District_Structure.png`}
+                            src={`${serverUrl}/uploads/images/District_Structure.png`}
                             alt="District Structure"
                             className="w-full md:w-9/12"
                         />
@@ -56,7 +56,7 @@ const members = () => {
                     <h2 className="routeSubheading">Structure</h2>
                     <div className="w-full flex justify-center items-center mt-2">
                         <img
-                            src={`${serverUrl}uploads/images/Taluka_Structure.png`}
+                            src={`${serverUrl}/uploads/images/Taluka_Structure.png`}
                             alt="Taluka Structure"
                             className="w-full md:w-9/12"
                         />

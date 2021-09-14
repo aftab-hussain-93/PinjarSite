@@ -26,7 +26,7 @@ const Benefits = (allBenefits) => {
             <div className="flex justify-between items-center mb-3">
                 <h1 className="articleHeading">Benefits from state and central govt</h1>
                 <div className=" mb-4 mr-6 p-3">
-                    <a href={`${serverUrl}uploads/documents/Benefits_REVISED-ALL-SCHEMES-DETAILS-20-21-Revised-1.pdf`} target="_blank"><DownloadSymbol /></a>
+                    <a href={`${serverUrl}/uploads/documents/Benefits_REVISED-ALL-SCHEMES-DETAILS-20-21-Revised-1.pdf`} target="_blank"><DownloadSymbol /></a>
                 </div>
             </div>
             <div className="w-full grid lg:grid-cols-2 grid-cols-1 gap-16">

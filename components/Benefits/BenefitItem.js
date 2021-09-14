@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { serverUrl } from '../../config/api.config'
 
 const BenefitItem = ({ headline, photo, htmlContent }) => {
-    photo = `${serverUrl}uploads/images/event_img1.jpeg`
+    photo = `${serverUrl}/uploads/images/event_img1.jpeg`
     
     if (!htmlContent) {
         htmlContent = `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> <br />

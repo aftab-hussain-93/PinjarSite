@@ -12,11 +12,10 @@ import { useProfile, useAdminUsers } from '../../../utils/auth'
 const users = () => {
     const [{show, message, type}, setalert] = useState({ show: false, message: "", type: "info" })
     const { users, isLoading: usersLoading, isError: usersError, mutate } = useAdminUsers()
-    const { user: loggedInUser, isLoading, isError } = useProfile()
-    
+    const { user: loggedInUser, isLoading, isError } = useProfile()    
     
     if (isError) Router.push('/')
-    if (!loggedInUser.isAdmin) Router.push('/dashboard')
+    if (!loggedInUser.isAdmin) Router.push('/admin/dashboard')
     if (usersLoading || isLoading) return (<FullPageLoader />)
 
     const showAlertWithMessage = (message, type) => {
@@ -74,6 +73,9 @@ const users = () => {
                                         <th scope="col" className="relative px-6 py-3">
                                             <span className="sr-only">Edit</span>
                                         </th>
+                                        <th scope="col" className="relative px-6 py-3">
+                                            <span className="sr-only">Delete</span>
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody className="bg-white divide-y divide-gray-200">
@@ -100,6 +102,13 @@ const users = () => {
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                         {user.isAdmin ? `Admin` : `Default`}
+                                                    </td>
+                                                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                                        <a
+                                                            href={`users/edit/${user.id}`}
+                                                            className="text-primary hover:text-black">
+                                                            Edit
+                                                        </a>
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                         <button onClick={() => { toggleStatus(user.id) }} className="text-primary hover:text-black">{user.isActive? 'Delete':'Active'}</button>

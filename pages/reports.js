@@ -6,53 +6,53 @@ import { serverUrl } from '../config/api.config'
 const planAndProgressReports = [
     {
         reportName: 'planAndProgress Report1',
-        link: `${serverUrl}uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
+        link: `${serverUrl}/uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
     },
     {
         reportName: 'planAndProgress Report2',
-        link: `${serverUrl}uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
+        link: `${serverUrl}/uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
     },
 ]
 
 const auditReports = [
     {
         reportName: 'Audit Report1',
-        link: `${serverUrl}uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
+        link: `${serverUrl}/uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
     },
     {
         reportName: 'Audit Report2',
-        link: `${serverUrl}uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
+        link: `${serverUrl}/uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
     },
 ]
 
 const budgetReports = [
     {
         reportName: 'Budget Report1',
-        link: `${serverUrl}uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
+        link: `${serverUrl}/uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
     },
     {
         reportName: 'Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf',
-        link: `${serverUrl}uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
+        link: `${serverUrl}/uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
     },
     {
         reportName: 'Budget Report1',
-        link: `${serverUrl}uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
+        link: `${serverUrl}/uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
     },
     {
         reportName: 'Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf',
-        link: `${serverUrl}uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
+        link: `${serverUrl}/uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
     },
     {
         reportName: 'Budget Report1',
-        link: `${serverUrl}uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
+        link: `${serverUrl}/uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
     },
     {
         reportName: 'Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf',
-        link: `${serverUrl}uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
+        link: `${serverUrl}/uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
     },
     {
         reportName: 'Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf',
-        link: `${serverUrl}uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
+        link: `${serverUrl}/uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
     },
 ]
 

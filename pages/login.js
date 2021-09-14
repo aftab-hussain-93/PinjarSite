@@ -1,17 +1,26 @@
 import { useState } from 'react'
+import Router from 'next/router'
 
 import Meta from '../components/Meta'
 import LoginForm from '../components/forms/LoginForm'
-
-import { login as loginUser } from '../utils/auth'
-import Router from 'next/router'
+import Alert from '../components/Alerts/alert'
 // SWR Hooks
-import { useProfile } from '../utils/auth';
+import { useProfile, login as userLogin } from '../utils/auth';
 
 const login = () => {
     const { mutate } = useProfile()
+    const [{ show, message, type: alertType }, setalert] = useState({ show: false, message: "", type: "info" })
     const [{ email, password }, setCredential] = useState({ email: "", password: "" })
     const [credentialError, setCredentialError] = useState({ email: false, password: false })
+    
+
+    const showAlertWithMessage = (message, type) => {
+        setalert({ show: true, message, type })
+    }
+
+    const closeAlertBox = () => {
+        setalert({ show: false, message: "", type: "info" })
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -30,13 +39,13 @@ const login = () => {
             password
         }
         try {
-            const { status, error } = await loginUser(userData)
-            if (status == "ok") {
-                mutate()
-                Router.push('/admin/dashboard')
-            }
-            else throw new Error(error)
+            const { status, error} = await userLogin(userData)
+            if (error || status !== 200) throw new Error(error)
+            // Login Successful
+            mutate()
+            Router.push('/admin/dashboard')
         } catch (error) {
+            showAlertWithMessage(`Errored out during login. Please try again later.`, 'error')
             console.error(error)
             console.error("Could not login")
             setCredentialError({ email: true, password: true })
@@ -46,7 +55,7 @@ const login = () => {
     return (
         <>
             <Meta title='Admin Login' />
-
+            <Alert message={message} showAlert={show} closeAlertBox={closeAlertBox} type={alertType} />
             <div
                 className="absolute top-0 w-full h-full bg-gray-900"
             ></div>

@@ -11,13 +11,19 @@ export const logout = async () => {
 
 export const login = async (userData) => {
     try {
-        await axios.post(`${apiUrl}/auth/login`, userData, { withCredentials: true });
+        const { data, status } = await axios.post(`${apiUrl}/auth/login`, userData, { withCredentials: true });
+        const { user, message, error } = data
+        
         return {
-            status: "ok"
+            status,
+            user,
+            message,
+            error
         }
     } catch (e) {
         return {
-            error: e
+            error: e,
+            message: 'Could not login'
         }
     }
 }

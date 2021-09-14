@@ -5,45 +5,67 @@ import '../styles/globals.css'
 import "react-datetime/css/react-datetime.css";
 // Components
 import Layout from '../components/Layouts/Layout'
-import AdminLayout from '../components/admin/AdminLayout'
+import AdminLayout from '../components/Layouts/AdminLayout'
 import FullPageLoader from '../components/Loaders/FullPageLoader';
+
 // SWR Hooks
 import { useProfile } from '../utils/auth';
 
-const App = (values) => {
-  const [pageLoading, setPageLoading] = useState(false);
-  const { Component, pageProps } = values
+// Auth Providers
+// import { AuthProvider } from '../components/context/AuthContext';
+
+const App = ({ Component, pageProps }) => {
   const router = useRouter()
-
-  const loginPage = <Component {...pageProps} />
-  const adminLayoutPage = (<AdminLayout><Component {...pageProps} /></AdminLayout>)
-  const regularLayout = (<Layout><Component {...pageProps} /></Layout>)
-  const loaderComponent = <FullPageLoader />
-
+  const [pageLoading, setPageLoading] = useState(false);
+  const { user: loginUser, isLoading, isError } = useProfile()
+  
+  let isDestinationLogin, isDestinationAdmin, result;
+  
   useEffect(() => { // Hook to show loader between page redirection
     const handleStart = () => { setPageLoading(true); };
     const handleComplete = () => { setPageLoading(false); };
-
+    
     router.events.on('routeChangeStart', handleStart);
     router.events.on('routeChangeComplete', handleComplete);
     router.events.on('routeChangeError', handleComplete);
   }, [router]);
-
-  const { user, isLoading, isError } = useProfile()
-
-  if (pageLoading || isLoading) return loaderComponent;
-
+  
+  const loginPage = <Component {...pageProps} />
+  const adminPage = (<AdminLayout><Component {...pageProps} /></AdminLayout>)
+  const regularLayout = (<Layout><Component {...pageProps} /></Layout>)
+  const loaderComponent = <FullPageLoader />
+  
+  
+  if (pageLoading) return loaderComponent;
+  
   if (['/login'].includes(router.pathname)) {
-    // Login Path
-    if (user) Router.push('/admin/dashboard');
-    else return loginPage;
-
+    isDestinationLogin = true
+    // result = (<AuthProvider>{loginPage}</AuthProvider>)
+    result = loginPage
   } else if (router.pathname.startsWith('/admin')) {
-    // Admin Login
-    if (user) return adminLayoutPage;
-    else if(isError) Router.push('/')
+    isDestinationAdmin = true
+    // result = (<AuthProvider>{adminPage}</AuthProvider>)
+    result = adminPage
+  } else {
+    result = regularLayout
   }
-  return regularLayout;
+  
+  if (isDestinationAdmin || isDestinationLogin) {
+    // Conditional rendering based on whether the user is logged in
+    if (isLoading || pageLoading) return loaderComponent;
+    
+    if (isError && isDestinationAdmin) {
+      Router.push('/')
+      // document.
+    }
+    if (!loginUser && isDestinationAdmin) {
+      Router.push('/')
+    }
+    if (loginUser && isDestinationLogin) {
+      Router.push('/admin/dashboard')
+    }
+  }
+  return result;
 }
 
 export default App

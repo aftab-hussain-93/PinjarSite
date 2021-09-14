@@ -17,8 +17,8 @@ const setHidden = () => { // Hiding scroll bar when modal is open
 
 const EventCard = ({ event: { id, title, image, description, eventDate, city, state, country, creator: { firstName } } } = {}) => {    
     const [showModal, setShowModal] = React.useState(false);
-    const imagePath = serverUrl + image
-
+    const imagePath = serverUrl + "/" + image
+    
     const closeModal = () => {
         setShowModal(false)
         setHidden()

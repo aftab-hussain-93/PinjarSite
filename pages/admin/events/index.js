@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Meta from '../../../components/Meta'
 import EventModal from '../../../components/Events/EventModal'
 import FullPageLoader from '../../../components/Loaders/FullPageLoader';
+import Alert from '../../../components/Alerts/alert'
 // Config
 import { apiUrl, serverUrl } from '../../../config/api.config'
 // Helpers
@@ -21,6 +22,7 @@ const setHidden = () => { // Hiding scroll bar when modal is open
 }
 
 const adminEvents = () => {
+    const [{ show, message, type: alertType }, setalert] = useState({ show: false, message: "", type: "info" })
     const [showModal, setShowModal] = useState(false);
     const [event, setModalEvent] = useState(null)
     const { events, isLoading: eventsLoading, isError: eventsError, mutate } = useAdminEvents()
@@ -30,7 +32,17 @@ const adminEvents = () => {
     if (eventsLoading || isLoading) return (<FullPageLoader />)
 
     const deleteEvent = async (eventId) => {
-        await fetch(`${apiUrl}/events/delete/${eventId}`, { credentials: "include" })
+        try {
+            const resp = await fetch(`${apiUrl}/events/delete/${eventId}`, { credentials: "include" })
+            const { status, message } = await resp.json()
+            if (status === 200) {
+                showAlertWithMessage(message , 'success')
+            } else {
+                showAlertWithMessage(message, 'error')
+            }
+        } catch (e) {
+            showAlertWithMessage(`Could not delete event. Please try again later.`, 'error')
+        }
         mutate()
     }
 
@@ -49,9 +61,18 @@ const adminEvents = () => {
         openModal()
     }
 
+    const showAlertWithMessage = (message, type) => {
+        setalert({ show: true, message, type })
+    }
+
+    const closeAlertBox = () => {
+        setalert({ show: false, message: "", type: "info" })
+    }
+
     return (
         <>
             <Meta title='Events Management' />
+            <Alert message={message} showAlert={show} closeAlertBox={closeAlertBox} type={alertType} />
             <div className="w-full flex justify-between border-b border-primary pb-5">
                 <span className="text-2xl sm:text-4xl font-semibold leading-normal capitalize text-primary ">Events Management</span>
             </div>
@@ -123,7 +144,7 @@ const adminEvents = () => {
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                         <button
-                                                            onClick={() => { viewEvent({ title, description, eventDate, city, state, country, firstName, imagePath: serverUrl + image }) }}
+                                                            onClick={() => { viewEvent({ title, description, eventDate, city, state, country, firstName, imagePath: serverUrl + "/" + image }) }}
                                                             className="text-primary hover:text-black">View</button>
                                                     </td>
                                                     {loggedInUser && (loggedInUser.isAdmin || loggedInUser.id === createdBy) &&
