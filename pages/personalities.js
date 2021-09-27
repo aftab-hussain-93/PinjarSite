@@ -14,7 +14,6 @@ const personalities = ({ people }) => {
                 <p className="mt-4">{messages.briefDescription} </p>
                 <article className="mt-4">
                     <span className="fullPageBorderLine"></span>
-                    <h1 className="text-3xl uppercase font-semibold tracking-wide mb-3 text-gray-700">Leaders</h1>
                     <PersonalitiesContainer personalities={people}/>
                 </article>
             </section>

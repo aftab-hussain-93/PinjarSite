@@ -21,8 +21,6 @@ const LinkBtn = React.forwardRef(({ onClick, href, title }, ref) => {
 
 const SideBar = () => {
     const { user, isLoading, isError } = useProfile()
-
-
     return (
         <div className="md:relative mx-auto">
             <ul className="list-reset flex flex-row md:flex-col">

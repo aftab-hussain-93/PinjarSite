@@ -1,7 +1,6 @@
 import React from "react";
 import Link from 'next/link'
-
-
+import { useRouter } from "next/router";
 
 export default function Navbar() {
     const [navbarOpen, setNavbarOpen] = React.useState(false);
@@ -9,8 +8,13 @@ export default function Navbar() {
     // `onClick`, `href`, and `ref` need to be passed to the DOM element
     // for proper handling
     const MyButton = React.forwardRef(({ onClick, href, title }, ref) => {
+        const router = useRouter()
+        let styles = "block w-full h-full"
+        if (router.pathname === href) {
+            styles = "block w-full h-full text-primary"
+        }
         return (
-            <a className="block w-full h-full" href={href} onClick={(e) => {
+            <a className={styles} href={href} onClick={(e) => {
                 setNavbarOpen(false)
                 onClick(e)
             }
