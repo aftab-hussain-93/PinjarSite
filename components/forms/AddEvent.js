@@ -4,7 +4,7 @@ import { usePlacesWidget } from "react-google-autocomplete";
 
 import { googleApiKey } from '../../config/config';
 
-import { isValidDate, getAddressObject, cancelAddEvent } from '../../utils/eventUtils'
+import { getAddressObject, cancelAddEvent } from '../../utils/eventUtils'
 
 const AddEvent = ({
     setFormError,
@@ -119,7 +119,6 @@ const AddEvent = ({
                     <Datetime
                         value={eventDate}
                         onChange={selectDate}
-                        isValidDate={isValidDate}
                         className="h-12"
                     />
                 </div>

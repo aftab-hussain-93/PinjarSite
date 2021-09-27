@@ -22,3 +22,8 @@ export const AdminTitles = {
     events: "Events Management",
     users: "Users Management"
 }
+
+export const Personalities = {
+    mainHeading: 'Personalities',
+    briefDescription: 'Sint exercitation voluptate do consequat nulla est reprehenderit nisi dolor magna. Eu tempor aliquip cillum laborum aliquip exercitation nisi commodo anim aute aute dolore. Nulla veniam ut fugiat velit anim eiusmod ea consectetur Lorem culpa aliqua laboris. Fugiat cillum Lorem in labore exercitation consequat enim non.'
+}

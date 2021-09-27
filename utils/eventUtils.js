@@ -1,5 +1,4 @@
 import Router from 'next/router'
-import moment from 'moment'
 import useSWR from 'swr';
 import { apiUrl } from '../config/api.config';
 import { fetcher } from './apiFetcher'
@@ -38,11 +37,6 @@ export const getAddressObject = (address_components) => {
     });
     return address;
 }
-
-export const isValidDate = (current) => {
-    const yesterday = moment().subtract(1, 'day');
-    return current.isAfter(yesterday);
-};
 
 export const cancelAddEvent = (e) => {
     e.preventDefault()

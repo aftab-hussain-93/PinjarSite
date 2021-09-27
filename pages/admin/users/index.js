@@ -4,22 +4,34 @@ import Router from 'next/router'
 import Meta from '../../../components/Meta'
 import FullPageLoader from '../../../components/Loaders/FullPageLoader'
 import Alert from '../../../components/Alerts/alert'
+import AddUserModal from '../../../components/modals/AddUserModal'
 // Config
 import { apiUrl } from '../../../config/api.config'
 // Helpers
 import { useProfile, useAdminUsers } from '../../../utils/auth'
 
+const setHidden = () => { // Hiding scroll bar when modal is open
+    if (document.body.style.overflow !== "hidden") {
+        document.body.style.overflow = "hidden";
+    } else {
+        document.body.style.overflow = "scroll";
+    }
+}
+
 const users = () => {
-    const [{show, message, type}, setalert] = useState({ show: false, message: "", type: "info" })
+    const [{ show, message, type }, setalert] = useState({ show: false, message: "", type: "info" })
+    const [editUser, setEditUser] = useState({})
+    const [showModal, setShowModal] = useState(false);
+    const [modalState, setModalState] = useState("create")
     const { users, isLoading: usersLoading, isError: usersError, mutate } = useAdminUsers()
-    const { user: loggedInUser, isLoading, isError } = useProfile()    
-    
+    const { user: loggedInUser, isLoading, isError } = useProfile()
+
     if (isError) Router.push('/')
-    if (!loggedInUser.isAdmin) Router.push('/admin/dashboard')
+    if (!loggedInUser.isAdmin) Router.push('/admin/events')
     if (usersLoading || isLoading) return (<FullPageLoader />)
 
     const showAlertWithMessage = (message, type) => {
-        setalert({ show: true, message, type})
+        setalert({ show: true, message, type })
     }
 
     const closeAlertBox = () => {
@@ -32,10 +44,86 @@ const users = () => {
         showAlertWithMessage('User Status Updated', 'info')
     }
 
+    const closeModal = () => {
+        setShowModal(false)
+        setHidden()
+        setEditUser({})
+        setModalState("create")
+    }
+
+    const openModal = () => {
+        setShowModal(true)
+        setHidden()
+    }
+
+    const editUserHandler = async ({ userId, firstName, lastName, password, role }) => {
+        const userUpdatedValues = {
+            firstName,
+            lastName,
+            password,
+            isAdmin: role === "admin"
+        }
+
+        try {
+            const res = await fetch(`${apiUrl}/users/${userId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userUpdatedValues),
+                credentials: "include"
+            }).then(resp => resp.json())
+            mutate()
+            if (res.status === 200) {
+                showAlertWithMessage('User updated successfully', 'success')
+            } else {
+                showAlertWithMessage('Unexpected error. Could not edit user. Please try again later.', 'error')
+            }
+        } catch (e) {
+            console.error(e)
+            showAlertWithMessage('Unexpected error. Could not edit user. Please try again later.', 'error')
+        }
+    }
+    const createUser = async ({ firstName, lastName, password, email, role, type = "email" }) => {
+        const newUser = {
+            firstName,
+            lastName,
+            password,
+            email,
+            isAdmin: role === "admin",
+            type
+        }
+
+        try {
+            const res = await fetch(`${apiUrl}/users`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newUser),
+                credentials: "include"
+            }).then(resp => resp.json())
+
+            mutate()
+
+            if (res.status === 201) {
+                showAlertWithMessage('User created successfully', 'success')
+            } else if (res.status === 400 && res.error === "already_exists") {
+                showAlertWithMessage('Credentials are already taken. Could not create user.', 'error')
+                return;
+            } else {
+                showAlertWithMessage('Unexpected error. Could not create user. Please try again later.', 'error')
+            }
+        } catch (e) {
+            console.error(e)
+            showAlertWithMessage('Unexpected error. Could not create user. Please try again later.', 'error')
+        }
+    }
+
     return (
         <>
             <Meta title='User Management' />
-            <Alert message={message} showAlert={show} closeAlertBox={closeAlertBox} type={type}/>
+            <Alert message={message} showAlert={show} closeAlertBox={closeAlertBox} type={type} />
             <div className="w-full flex justify-between border-b border-primary pb-5">
                 <span className="text-2xl sm:text-4xl font-semibold leading-normal capitalize text-primary ">User Management</span>
             </div>
@@ -43,11 +131,14 @@ const users = () => {
                 <div className="container mt-5">
                     <div className="flex flex-start gap-10">
                         <h1 className="text-2xl font-semibold leading-normal capitalize text-gray-600 block">User List</h1>
-                        <a
-                            href="/admin/users/add"
+                        <button
+                            onClick={() => {
+                                openModal()
+                                setModalState("create")
+                            }}
                             className="rounded py-1 px-2  sm:py-1 sm:px-2 font-normal capitalize cursor-pointer tracking-tight sm:tracking-wide hover:bg-white hover:text-primary border-primary border bg-primary text-white">
                             Add User
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -104,27 +195,34 @@ const users = () => {
                                                         {user.isAdmin ? `Admin` : `Default`}
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                        <a
-                                                            href={`users/edit/${user.id}`}
-                                                            className="text-primary hover:text-black">
-                                                            Edit
-                                                        </a>
+                                                        <button onClick={() => {
+                                                            openModal()
+                                                            setEditUser({ userId: user.id, firstName: user.firstName, lastName: user.lastName, email: user.email, role: user.isAdmin ? "admin" : "default" })
+                                                            setModalState("edit")
+                                                        }} className="text-primary hover:text-black">Edit</button>
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                        <button onClick={() => { toggleStatus(user.id) }} className="text-primary hover:text-black">{user.isActive? 'Delete':'Active'}</button>
+                                                        <button onClick={() => { toggleStatus(user.id) }} className="text-primary hover:text-black">{user.isActive ? 'Delete' : 'Active'}</button>
                                                     </td>
                                                 </tr>
                                             )
                                         }
                                         )
                                     }
-
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
+            <AddUserModal
+                {...editUser}
+                showModal={showModal}
+                closeModal={closeModal}
+                createHandler={createUser}
+                editHandler={editUserHandler}
+                modalState={modalState}
+            />
         </>
     )
 }

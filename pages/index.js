@@ -24,7 +24,7 @@ export default function Home({ events, images }) {
       <section className="responsivePageDiv">
         <HalfWidthLayout {...preamble} />
         <AssociationDetails />
-        <AllEvents events={events}/>
+        {events && events.length > 0 && <AllEvents events={events} />}
       </section>
     </>
   )

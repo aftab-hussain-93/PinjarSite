@@ -62,7 +62,7 @@ const App = ({ Component, pageProps }) => {
       Router.push('/')
     }
     if (loginUser && isDestinationLogin) {
-      Router.push('/admin/dashboard')
+      Router.push('/admin/events')
     }
   }
   return result;

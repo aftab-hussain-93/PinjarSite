@@ -75,9 +75,9 @@ export default function Navbar() {
                             <li className='navItem'>
                                 <Link href='/reports' passHref><MyButton title={`Reports`} /></Link>
                             </li>
-                            {/* <li className='navItem'>
+                            <li className='navItem'>
                                 <Link href='/personalities' passHref><MyButton title={`Personalities`} /></Link>
-                            </li> */}
+                            </li>
                         </ul>
                     </div>
                 </div>

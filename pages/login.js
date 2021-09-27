@@ -43,7 +43,7 @@ const login = () => {
             if (error || status !== 200) throw new Error(error)
             // Login Successful
             mutate()
-            Router.push('/admin/dashboard')
+            Router.push('/admin/events')
         } catch (error) {
             showAlertWithMessage(`Errored out during login. Please try again later.`, 'error')
             console.error(error)

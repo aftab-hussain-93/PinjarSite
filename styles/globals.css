@@ -57,14 +57,14 @@
 }
 
 .responsivePageDiv {
-    @apply md:max-w-3/4 lg:max-w-2/3 mx-auto md:p-8 lg:p-12 p-2 bg-white mt-1;
+    @apply md:max-w-3/4 lg:max-w-2/3 mx-auto md:p-8 lg:p-12 p-2 bg-white mt-1 min-h-screen;
 }
 
 
 /* Modal styles, transition effect */
 .ReactModal__Overlay {
   opacity: 0;
-  transform: translateX(-100px);
+  transform: translateY(-100px);
   transition: all 500ms ease-in-out;
 }
 
@@ -75,5 +75,5 @@
 
 .ReactModal__Overlay--before-close {
   opacity: 0;
-  transform: translateX(-100px);
+  transform: translateY(-100px);
 }

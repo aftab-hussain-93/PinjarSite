@@ -1,62 +1,9 @@
 import Meta from '../components/Meta'
-import ReportCard from '../components/ReportCard'
+import ReportContainer from '../components/Reports/ReportContainer'
 import { Reports as messages } from '../locale/messages'
-import { serverUrl } from '../config/api.config'
+import { serverUrl, apiUrl  } from '../config/api.config'
 
-const planAndProgressReports = [
-    {
-        reportName: 'planAndProgress Report1',
-        link: `${serverUrl}/uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
-    },
-    {
-        reportName: 'planAndProgress Report2',
-        link: `${serverUrl}/uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
-    },
-]
-
-const auditReports = [
-    {
-        reportName: 'Audit Report1',
-        link: `${serverUrl}/uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
-    },
-    {
-        reportName: 'Audit Report2',
-        link: `${serverUrl}/uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
-    },
-]
-
-const budgetReports = [
-    {
-        reportName: 'Budget Report1',
-        link: `${serverUrl}/uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
-    },
-    {
-        reportName: 'Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf',
-        link: `${serverUrl}/uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
-    },
-    {
-        reportName: 'Budget Report1',
-        link: `${serverUrl}/uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
-    },
-    {
-        reportName: 'Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf',
-        link: `${serverUrl}/uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
-    },
-    {
-        reportName: 'Budget Report1',
-        link: `${serverUrl}/uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
-    },
-    {
-        reportName: 'Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf',
-        link: `${serverUrl}/uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
-    },
-    {
-        reportName: 'Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf',
-        link: `${serverUrl}/uploads/documents/Plan_and_Progress_Reportನಿಗಮದ-ಮನವಿ1-12-20.pdf`
-    },
-]
-
-const reports = () => {
+const reports = ({ allReports: { plan, audit, budget } }) => {
 
     return (
         <>
@@ -71,35 +18,20 @@ const reports = () => {
 
                         <h2 className="routeSubheading">Reports</h2>
                         <div className="flex flex-wrap mt-3">
-                            {
-                                planAndProgressReports.map(({ reportName, link }, index) => {
-                                    return <ReportCard key={ index } reportName={reportName} link={link} />
-                                }
-                                )
-                            }
+                            <ReportContainer reports={plan} />
                         </div>
                     </div>
                     <div className="mt-4">
                         <span className="fullPageBorderLine"></span>
                         <h1 className="articleHeading">Audit and Budget Reports</h1>
-                        
+
                         <h2 className="routeSubheading">Audit Reports</h2>
                         <div className="flex flex-wrap mt-3">
-                            {
-                                auditReports.map(({ reportName, link }, index) => {
-                                    return <ReportCard key={ index } reportName={reportName} link={link} />
-                                }
-                                )
-                            }
+                            <ReportContainer reports={audit} />
                         </div>
                         <h2 className="routeSubheading">Budget Reports</h2>
                         <div className="flex flex-wrap mt-3">
-                            {
-                                budgetReports.map(({ reportName, link }, index) => {
-                                    return <ReportCard key={index} reportName={reportName} link={link} />
-                                }
-                                )
-                            }
+                            <ReportContainer reports={budget} />
                         </div>
                     </div>
                 </div>
@@ -107,4 +39,30 @@ const reports = () => {
         </>
     )
 }
+
+export const getServerSideProps = async () => {
+
+    const reports = await fetch(`${apiUrl}/reports`).then(res => res.json())
+    const planAndProgressReports = []
+    const budgetReports = []
+    const auditReports = []
+
+    reports.forEach(report => {
+        if (report.fileType === "audit") auditReports.push(report)
+        else if (report.fileType === "plan") planAndProgressReports.push(report)
+        else budgetReports.push(report)
+    })
+
+    return {
+        props: {
+            allReports: {
+                plan: planAndProgressReports,
+                audit: auditReports,
+                budget: budgetReports,
+            },
+        },
+    }
+}
+
+
 export default reports
