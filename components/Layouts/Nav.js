@@ -63,12 +63,12 @@ export default function Navbar() {
                         }
                         id="example-navbar-danger"
                     >
-                        <ul className="flex flex-col lg:flex-row list-none lg:ml-auto z-50 pt-5 lg:p-0 text-center">
+                        <ul className="flex flex-col lg:flex-row list-none lg:ml-auto pt-5 lg:p-0 text-center">
                             <li className='navItem'>
                                 <Link href='/events' passHref><MyButton title={`Events`}/></Link>
                             </li>
                             <li className='navItem'>
-                                <Link href='/members' passHref><MyButton title={`Members`} /></Link>
+                                <Link href='/members' passHref><MyButton title={`Association`} /></Link>
                             </li>
                             <li className='navItem'>
                                 <Link href='/about' passHref><MyButton title={`About`} /></Link>

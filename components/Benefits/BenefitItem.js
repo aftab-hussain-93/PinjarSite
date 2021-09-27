@@ -20,9 +20,9 @@ const BenefitItem = ({ headline, photo, htmlContent }) => {
                     className="text-gray-500 text-sm sm:h-52 h-20 overflow-hidden"
                     dangerouslySetInnerHTML={{ __html: htmlContent }}>
                 </div>
-                <div className="text-primary text-sm font-bold cursor-pointer tracking-wider hover:text-gray-500">
+                {/* <div className="text-primary text-sm font-bold cursor-pointer tracking-wider hover:text-gray-500">
                     <Link href='#'>More Details</Link>
-                </div>
+                </div> */}
             </div>
         </div>
     )

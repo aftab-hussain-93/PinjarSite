@@ -1,21 +1,14 @@
 import BenefitItem from './BenefitItem'
+import ScholarshipItem from './ScholarshipItem'
+import FundRaisingItem from './FundRaisingItem'
+import EmploymentItem from './EmploymentItem'
 import DownloadSymbol from '../DownloadSymbol'
 import { Benefits as messages } from '../../locale/messages'
 import { serverUrl } from '../../config/api.config'
 
-const benefitItemProp1 = {
-    headline: 'For educational purposes'
-}
-const benefitItemProp2 = {
-    headline: 'For employment purposes'
-}
 const benefitItemProp3 = {
-    headline: 'self employment schemes'
+    headline: 'Government Benefit Schemes'
 }
-const benefitItemProp4 = {
-    headline: 'scholarships'
-}
-
 
 const Benefits = (allBenefits) => {
     return (
@@ -30,10 +23,10 @@ const Benefits = (allBenefits) => {
                 </div>
             </div>
             <div className="w-full grid lg:grid-cols-2 grid-cols-1 gap-16">
-                <BenefitItem {...benefitItemProp1} />
-                <BenefitItem {...benefitItemProp2} />
+                <FundRaisingItem />
+                <ScholarshipItem />
+                <EmploymentItem />
                 <BenefitItem {...benefitItemProp3} />
-                <BenefitItem {...benefitItemProp4} />
             </div>
         </article>
     )

@@ -12,16 +12,12 @@ const about = () => {
         photo: `${serverUrl}/uploads/images/event_img1.jpeg`,
     }
 
-    const fixedAssetsSubheadings1 = {
-        subheadline: `College`,
-        photo: `${serverUrl}/uploads/images/event_img1.jpeg`,
-    }
     const fixedAssetsSubheadings2 = {
-        subheadline: `Shaadi Mahal`,
-        photo: `${serverUrl}/uploads/images/event_img1.jpeg`,
+        subheadline: `Hubballi Shaadi Mahal, Hubballi`,
+        photo: `${serverUrl}/uploads/images/hubbali_shadi_mahal.jpeg`,
     }
     const fixedAssetsSubheadings3 = {
-        subheadline: `Shouhard Bhavan`,
+        subheadline: `Souhardha Bhavan, Davanagere`,
         photo: `${serverUrl}/uploads/images/event_img1.jpeg`,
     }
     
@@ -43,17 +39,41 @@ const about = () => {
                 <div className="mt-4">
                     <HalfWidthLayout {...preamble} />
                     <AssociationDetails />
+                    <div className="my-4">
+                        <span className="fullPageBorderLine"></span>
+                        <div className="flex justify-between items-center ">
+                            <h1 className="text-3xl uppercase font-semibold tracking-wide mb-4 text-black">Aims & Objectives</h1>
+                        </div>
+                        <ol className="list-decimal pl-8 leading-7">
+                            <li className="pt-3">Mandatory Quarterly Meetings</li>
+                            <li>Administrating Taluka level activities</li>
+                            <li>Reporting to State committee</li>
+                        </ol>
+                    </div>
+                    <div className="my-4">
+                        <span className="fullPageBorderLine"></span>
+                        <div className="flex justify-between items-center ">
+                            <h1 className="text-3xl uppercase font-semibold tracking-wide mb-4 text-black">Life Members</h1>
+                        </div>
+                        <ol className="list-decimal pl-8 leading-7">
+                            <li className="pt-3">Taluka-227</li>
+                            <li>Parent Members</li>
+                            <li>Great Donors</li>
+                        </ol>
+                    </div>
+                    <div className="my-4">
+                        <span className="fullPageBorderLine"></span>
+                        <div className="flex justify-between items-center ">
+                            <h1 className="text-3xl uppercase font-semibold tracking-wide mb-4 text-black">Affiliated Associations</h1>
+                        </div>
+                    </div>
                     <FullWidthLayout {...fixedAssets} />
-                    <HalfWidthLayout {...fixedAssetsSubheadings1} />
                     <HalfWidthLayout {...fixedAssetsSubheadings2} />
                     <HalfWidthLayout {...fixedAssetsSubheadings3} />
                     <div className="my-4">
                         <span className="fullPageBorderLine"></span>
                         <div className="flex justify-between items-center ">
-                            <h1 className="text-3xl uppercase font-semibold tracking-wide mb-4 text-black">{`Affiliated Associations`}</h1>
-                        </div>
-                        <div>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi itaque nobis fugit sunt necessitatibus. Nesciunt expedita laboriosam id possimus. Repellat modi hic dignissimos provident unde tenetur, nulla dolore in officiis?
+                            <h1 className="text-3xl uppercase font-semibold tracking-wide mb-4 text-black">Developments</h1>
                         </div>
                     </div>
                 </div>

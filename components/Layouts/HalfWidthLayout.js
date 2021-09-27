@@ -3,9 +3,7 @@ import DownloadSymbol from "../DownloadSymbol"
 const HalfWidthLayout = ({ headline, photo, htmlContent, subheadline, downloadLink, downloadIcon = false }) => {
 
     if (!htmlContent) {
-        htmlContent = `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> <br />
-            <p>kannada text goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-            `
+        htmlContent = ``
     }
 
     return (
