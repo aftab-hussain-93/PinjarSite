@@ -1,85 +1,35 @@
 import Meta from '../components/Meta'
-import Image from 'next/image'
+import PersonalitiesContainer from '../components/Personalities/PersonalitiesContainer'
 
-const personalities = () => {
-    const img = `/portrait_pic.jpg`
+import { Personalities as messages } from '../locale/messages'
+import { apiUrl } from '../config/api.config'
+
+const personalities = ({ people }) => {
 
     return (
         <>
-            <Meta title={'Personalities'} />
+            <Meta title={messages.mainHeading} />
             <section className="responsivePageDiv">
-                <h1 className="routeHeading">Personalities</h1>
-
-                <div className="mt-8 grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-10">
-                    
-                    <div className="rounded-lg overflow-hidden">
-                        <img src={img} className="w-full h-40 sm:h-64 object-cover" />
-                        <div className="text-center">
-                            <p className="text-xl font-semibold">Full Name</p>
-                            <p className="text-lg font-bold">Occupation/Position</p>
-                            <p className="text-lg">Title</p>
-                        </div>
-                    </div>
-                    <div className="rounded-lg overflow-hidden">
-                        <img src={img} className="w-full h-40 sm:h-64 object-cover" />
-                        <div className="text-center">
-                            <p className="text-xl font-semibold">Full Name</p>
-                            <p className="text-lg font-bold">Occupation/Position</p>
-                            <p className="text-lg">Title</p>
-                        </div>
-                    </div>
-                    <div className="rounded-lg overflow-hidden">
-                        <img src={img} className="w-full h-40 sm:h-64 object-cover" />
-                        <div className="text-center">
-                            <p className="text-xl font-semibold">Full Name</p>
-                            <p className="text-lg font-bold">Occupation/Position</p>
-                            <p className="text-lg">Title</p>
-                        </div>
-                    </div>
-                    <div className="rounded-lg overflow-hidden">
-                        <img src={img} className="w-full h-40 sm:h-64 object-cover" />
-                        <div className="text-center">
-                            <p className="text-xl font-semibold">Full Name</p>
-                            <p className="text-lg font-bold">Occupation/Position</p>
-                            <p className="text-lg">Title</p>
-                        </div>
-                    </div>
-                    <div className="rounded-lg overflow-hidden">
-                        <img src={img} className="w-full h-40 sm:h-64 object-cover" />
-                        <div className="text-center">
-                            <p className="text-xl font-semibold">Full Name</p>
-                            <p className="text-lg font-bold">Occupation/Position</p>
-                            <p className="text-lg">Title</p>
-                        </div>
-                    </div>
-                    <div className="rounded-lg overflow-hidden">
-                        <img src={img} className="w-full h-40 sm:h-64 object-cover" />
-                        <div className="text-center">
-                            <p className="text-xl font-semibold">Full Name</p>
-                            <p className="text-lg font-bold">Occupation/Position</p>
-                            <p className="text-lg">Title</p>
-                        </div>
-                    </div>
-                    <div className="rounded-lg overflow-hidden">
-                        <img src={img} className="w-full h-40 sm:h-64 object-cover" />
-                        <div className="text-center">
-                            <p className="text-xl font-semibold">Full Name</p>
-                            <p className="text-lg font-bold">Occupation/Position</p>
-                            <p className="text-lg">Title</p>
-                        </div>
-                    </div>
-                    <div className="rounded-lg overflow-hidden">
-                        <img src={img} className="w-full h-40 sm:h-64 object-cover" />
-                        <div className="text-center">
-                            <p className="text-xl font-semibold">Full Name</p>
-                            <p className="text-lg font-bold">Occupation/Position</p>
-                            <p className="text-lg">Title</p>
-                        </div>
-                    </div>
-                </div>
+                <h1 className="routeHeading">{messages.mainHeading}</h1>
+                <p className="mt-4">{messages.briefDescription} </p>
+                <article className="mt-4">
+                    <span className="fullPageBorderLine"></span>
+                    <PersonalitiesContainer personalities={people}/>
+                </article>
             </section>
         </>
     )
 }
+
+export const getServerSideProps = async () => {
+    const people = await fetch(`${apiUrl}/personalities`).then(res => res.json())
+
+    return {
+        props: {
+            people
+        },
+    }
+}
+
 
 export default personalities

@@ -41,65 +41,30 @@ const Footer = () => {
                                 </li>
                             </ul>
                         </div>
-                        {/* <div className="px-4  mt-8 md:mt-0">
-                            <h5 className="text-2xl font-semibold mb-6">About</h5>
-                            <ul className="list-none">
-                                <li className="mb-2">
-                                    <a href="#" className="border-b border-solid border-transparent hover:border-primary hover:text-primary">Team</a>
-                                </li>
-                                <li className="mb-2">
-                                    <a href="#" className="border-b border-solid border-transparent hover:border-primary hover:text-primary">Locations</a>
-                                </li>
-                                <li className="mb-2">
-                                    <a href="#" className="border-b border-solid border-transparent hover:border-primary hover:text-primary">Privacy</a>
-                                </li>
-                                <li className="mb-2">
-                                    <a href="#" className="border-b border-solid border-transparent hover:border-primary hover:text-primary">Terms</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="px-4  mt-8 md:mt-0">
-                            <h5 className="text-2xl font-semibold mb-6">Help</h5>
-                            <ul className="list-none">
-                                <li className="mb-2">
-                                    <a href="#" className="border-b border-solid border-transparent hover:border-primary hover:text-primary">Support</a>
-                                </li>
-                                <li className="mb-2">
-                                    <a href="#" className="border-b border-solid border-transparent hover:border-primary hover:text-primary">Help Center</a>
-                                </li>
-                                <li className="mb-2">
-                                    <a href="#" className="border-b border-solid border-transparent hover:border-primary hover:text-primary">Contact Us</a>
-                                </li>
-                            </ul>
-                        </div> */}
-                        <div className="px-4  mt-8 md:mt-0">
-                            <h5 className="text-2xl font-semibold mb-6">Address</h5>
-                            <address className="not-italic mb-4 text-sm">
-                                Bangalore<br />
-                                Karnataka, India
-                            </address>
-                            <h5 className="text-2xl font-semibold mb-6">Phone Number</h5>
-                            <p className="not-italic mb-4 text-sm">
-                                +91-1234567890
-                            </p>
+                        <div className="px-4 mt-8 md:mt-0 flex flex-col">
+                            <div>
+                                <h5 className="text-2xl font-semibold mb-2">Registered Address</h5>
+                                <address className="not-italic mb-4 text-sm">
+                                    Near Kote Post Office, Shivamogga - 577201
+                                </address>
+                            </div>
+                            <div>
+                                <h5 className="text-2xl font-semibold mb-2">Administrative Office</h5>
+                                <address className="not-italic mb-4 text-sm">
+                                    Vishvamanava Cultural and Educational Instituition Premises, <br />
+                                    Seebara - Guttinadu, Inalli Post, Chitradurga - 577502
+                                </address>
+
+                            </div>
+                            <div>
+                                <h5 className="text-2xl font-semibold mb-2">Email Address</h5>
+                                <p className="not-italic mb-4 text-sm">
+                                    krnpshj@gmail.com
+                                </p>
+                            </div>
                         </div>
                     </div>
 
-                    {/* <div className="sm:flex sm:flex-wrap sm:-mx-4 mt-6 pt-6 sm:mt-12 sm:pt-12 border-t">
-                        <div className="px-4 mt-4 md:mt-0">
-                            <h6 className="font-bold mb-2">Address</h6>
-                            <address className="not-italic mb-4 text-sm">
-                                Bangalore<br />
-                                Karnataka, India
-                            </address>
-                        </div>
-                        <div className="px-4 mt-4 md:mt-0">
-                            <h6 className="font-bold mb-2">Phone Number</h6>
-                            <p className="not-italic mb-4 text-sm">
-                                +91-1234567890
-                            </p>
-                        </div>
-                    </div> */}
                 </div>
             </footer>
         </>
