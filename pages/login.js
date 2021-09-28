@@ -7,6 +7,9 @@ import Alert from '../components/Alerts/alert'
 // SWR Hooks
 import { useProfile, login as userLogin } from '../utils/auth';
 
+// State
+import globalState from '../utils/state/globalState'
+
 const login = () => {
     const { mutate } = useProfile()
     const [{ show, message, type: alertType }, setalert] = useState({ show: false, message: "", type: "info" })
@@ -39,9 +42,14 @@ const login = () => {
             password
         }
         try {
-            const { status, error} = await userLogin(userData)
+            const { status, user, error} = await userLogin(userData)
             if (error || status !== 200) throw new Error(error)
             // Login Successful
+            globalState.set(prevState => ({
+                ...prevState,
+                isAuthenticated: true,
+                user
+            }))
             mutate()
             Router.push('/admin/events')
         } catch (error) {

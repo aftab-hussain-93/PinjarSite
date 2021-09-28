@@ -13,6 +13,9 @@ import Router from 'next/router';
 import { useAdminEvents } from '../../../utils/eventUtils';
 import { useProfile } from '../../../utils/auth';
 
+import { useState as hookUseState } from '@hookstate/core';
+import globalState from '../../../utils/state/globalState';
+
 const setHidden = () => { // Hiding scroll bar when modal is open
     if (document.body.style.overflow !== "hidden") {
         document.body.style.overflow = "hidden";
@@ -27,6 +30,8 @@ const adminEvents = () => {
     const [event, setModalEvent] = useState(null)
     const { events, isLoading: eventsLoading, isError: eventsError, mutate } = useAdminEvents()
     const { user: loggedInUser, isLoading, isError } = useProfile()
+    const state = hookUseState(globalState);
+    console.log("The state is ............", state.isAuthenticated.get())
 
     if (isError) Router.push('/')
     if (eventsLoading || isLoading) return (<FullPageLoader />)

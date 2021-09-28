@@ -9,6 +9,9 @@
     "export": "next build && next export"
   },
   "dependencies": {
+    "@hookstate/core": "^3.0.12",
+    "@hookstate/devtools": "^3.0.1",
+    "@hookstate/logger": "^3.0.0",
     "axios": "^0.21.1",
     "formik": "^2.2.9",
     "next": "^11.1.1",
